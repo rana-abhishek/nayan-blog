@@ -7,7 +7,12 @@ branches:
   only:
     - master # build master branch only
 script:
-  - hexo clean
+  - git clone https://github.com/ppoffice/hexo-theme-hueman.git themes/hueman
+  - npm install -S hexo-generator-json-content
+  - cd themes/hueman
+  - mv _config.yml.example _config.yml 
+  - cd ..
+  - cd ..
   - hexo generate # generate static files
 deploy:
   provider: pages
