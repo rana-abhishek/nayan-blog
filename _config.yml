@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Nayan Blogs
+title: Nayan Blog
 subtitle: ''
 description: ''
 keywords:
@@ -15,7 +15,7 @@ timezone: ''
 # root: /blog/
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://rana-abhishek.github.io/nayan-blog
-root: /
+root: /nayan-blog/
 permalink: /:year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
