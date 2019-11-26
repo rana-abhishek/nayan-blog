@@ -2,6 +2,7 @@
 title: Text detection in number plates
 date: 2019-11-26 15:21:29
 author: Akshay Bajpai
+category: AI
 tags: 
 ---
 
@@ -30,7 +31,7 @@ graysacle_image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
 denoised_image = cv2.fastNlMeansDenoising(grayscale_img, None, 10, 7, 21)
 ```
 
-{% asset_img Figure_1.png Denoising %}
+{% asset_img Figure_2.png Denoising %}
 
 * Contrast adjustment: Sometimes we have low contrast images. This makes it difficultto separate text from the image background. We need high contrast text images forthe localization process. We can increase image contrast using Contrast LimitedAdaptive Histogram Equalization (CLAHE) among many other contrast enhancementmethods provided by skimage.
 
@@ -39,7 +40,7 @@ from  skimage import exposure
 contrast_enhanced_image = exposure.equalize_adapthist(denoised, clip_limit=0.03)
 ```
 
-{% asset_img Figure_2.png Contrast Adjustment %}
+{% asset_img Figure_3.png Contrast Adjustment %}
 
 So now we are done with image preprocessing let us move on to the second part, textlocalization.
 
@@ -191,7 +192,7 @@ pltShow("MSER Result Analysis", \
    	)
 ```
 
-{% asset_img Figure_3.png MSER Result Analysis %}
+{% asset_img Figure_1.png MSER Result Analysis %}
 
 ## Conclusion
 
