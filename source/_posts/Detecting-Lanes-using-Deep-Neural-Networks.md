@@ -1,7 +1,8 @@
 ---
 title: Detecting Lanes using Deep Neural Networks
 date: 2019-11-26 11:17:10
-author: 
+author: Anand Kummari
+category: AI
 tags:
 - Machine Learning
 - Deep Learning
@@ -91,12 +92,12 @@ OpenCV has an inbuilt function to draw multiple lines through a set of points. O
 
 The label should be a grayscale image. Generate one label for each clip from the JSON file. First, create a mask of black pixels with a shape similar to the raw_file image from the JSON file. Now, using OpenCV’s polylines method draw lines with different colors (each corresponding to each lane in lanes) on the mask image using the lanes and h_samples from the JSON file. From the three channeled mask image generate a gray scale mask image with values as class numbers. Likewise, create labels for all the images in the JSON file. You can resize the image and its label to a smaller size for lesser computations.
 
-``
+```
 mask = np.zeros_like(img)
 colors = [[255,0,0],[0,255,0],[0,0,255],[0,255,255]]
 for i in range(len(gt_lanes_vis)):
     cv2.polylines(mask, np.int32([gt_lanes_vis[i]]), isClosed=False,color=colors[i], thickness=5)
-# create grey-scale label image
+!! create grey-scale label image
 label = np.zeros((720,1280),dtype = np.uint8)
 for i in range(len(colors)):
    label[np.where((mask == colors[i]).all(axis = 2))] = i+1
@@ -118,7 +119,7 @@ Build and create an object of the model. Train it over the dataset created above
 After training, get the model’s predictions using the code snippet below. I have implemented this in Pytorch. I use the color_lanes method to convert output images from the model (which are two channeled with values as class numbers) to three channeled images. im_seg is the final overlayed image shown in Image 4.
 
 ```
-# using pytorch
+#using pytorch
 import torch
 from torchvision.transforms import ToTensor
 def color_lanes(image, classes, i, color, HEIGHT, WIDTH):

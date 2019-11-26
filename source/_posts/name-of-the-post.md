@@ -4,7 +4,6 @@ date: 2019-11-21 15:34:32
 author: Abhishek Rana
 categories:
 - Sports
-- Baseball
 tags:
 - Injury
 - Fight
