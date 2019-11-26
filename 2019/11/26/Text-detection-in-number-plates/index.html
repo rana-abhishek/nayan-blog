@@ -19,10 +19,10 @@
 <meta property="og:site_name" content="Nayan Blog">
 <meta property="og:description" content="Text detection in number platesOne of the vital modules in the optical character recognition(OCR) pipeline is text detectionand segmentation which is also called text localization. In this post, we wi">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https:&#x2F;&#x2F;nayan.co&#x2F;blog&#x2F;2019&#x2F;11&#x2F;26&#x2F;Text-detection-in-number-plates&#x2F;Figure_1.png">
-<meta property="og:updated_time" content="2019-11-26T10:43:00.844Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;nayan.co&#x2F;blog&#x2F;2019&#x2F;11&#x2F;26&#x2F;Text-detection-in-number-plates&#x2F;Figure_2.png">
+<meta property="og:updated_time" content="2019-11-26T11:14:16.256Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;nayan.co&#x2F;blog&#x2F;2019&#x2F;11&#x2F;26&#x2F;Text-detection-in-number-plates&#x2F;Figure_1.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;nayan.co&#x2F;blog&#x2F;2019&#x2F;11&#x2F;26&#x2F;Text-detection-in-number-plates&#x2F;Figure_2.png">
     
 
     
@@ -132,7 +132,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    uncategorized
+    <a class="page-title-link" href="/blog/categories/AI/">AI</a>
     </h1>
 </div>
 
@@ -190,14 +190,14 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">denoised_image = cv2.fastNlMeansDenoising(grayscale_img, None, 10, 7, 21)</span><br></pre></td></tr></table></figure>
 
-<img src="/blog/2019/11/26/Text-detection-in-number-plates/Figure_1.png" class="" title="Denoising">
+<img src="/blog/2019/11/26/Text-detection-in-number-plates/Figure_2.png" class="" title="Denoising">
 
 <ul>
 <li>Contrast adjustment: Sometimes we have low contrast images. This makes it difficultto separate text from the image background. We need high contrast text images forthe localization process. We can increase image contrast using Contrast LimitedAdaptive Histogram Equalization (CLAHE) among many other contrast enhancementmethods provided by skimage.</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from  skimage import exposure</span><br><span class="line">contrast_enhanced_image = exposure.equalize_adapthist(denoised, clip_limit=0.03)</span><br></pre></td></tr></table></figure>
 
-<img src="/blog/2019/11/26/Text-detection-in-number-plates/Figure_2.png" class="" title="Contrast Adjustment">
+<img src="/blog/2019/11/26/Text-detection-in-number-plates/Figure_3.png" class="" title="Contrast Adjustment">
 
 <p>So now we are done with image preprocessing let us move on to the second part, textlocalization.</p>
 <h2 id="Text-Localization"><a href="#Text-Localization" class="headerlink" title="Text Localization"></a>Text Localization</h2><p>In this part, we will see how to detect a large number of text region candidates andprogressively removes those less likely to contain text. Using the MSER feature descriptor tofind text candidates in the image. It works well for text because the consistent color and highcontrast of text lead to stable intensity profiles.</p>
@@ -227,7 +227,7 @@
 <p>Enough coding. Let’s see some results.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">pltShow(&quot;MSER Result Analysis&quot;, \</span><br><span class="line">   	   (self.img, &quot;Image&quot;), \</span><br><span class="line">   	   (self.cannyImg, &quot;Canny&quot;), \</span><br><span class="line">   	   (res, &quot;MSER,(&#123;&#125; regions)&quot;.format(n1)), \</span><br><span class="line">   	   (res2, &quot;Area=&#123;&#125;,(&#123;&#125; regions)&quot;.format(config.mser_areaLimit, n2)), \</span><br><span class="line">   	   (res3, &quot;Perimeter=&#123;&#125;,(&#123;&#125; regions)&quot;.format(config.mser_perimeterLimit, n3)), \</span><br><span class="line">   	   (res4, &quot;Aspect Ratio=&#123;&#125;,(&#123;&#125; regions)&quot;.format(config.mser_aspectRatioLimit, n4)), \</span><br><span class="line">   	   (res5, &quot;Occupation=&#123;&#125;,(&#123;&#125; regions)&quot;.format(config.mser_occupationLimit, n5)), \</span><br><span class="line">   	   (res6, &quot;Compactness=&#123;&#125;,(&#123;&#125; regions)&quot;.format(config.mser_compactnessLimit, n6)), \</span><br><span class="line">   	   (boxRes, &quot;Segmented Image&quot;) \</span><br><span class="line">   	)</span><br></pre></td></tr></table></figure>
 
-<img src="/blog/2019/11/26/Text-detection-in-number-plates/Figure_3.png" class="" title="MSER Result Analysis">
+<img src="/blog/2019/11/26/Text-detection-in-number-plates/Figure_1.png" class="" title="MSER Result Analysis">
 
 <h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>In this post, we covered the various image preprocessing techniques and learned about howto perform text localization on number plates.</p>
 
@@ -237,7 +237,7 @@
 
 
 
-    <a data-url="https://nayan.co/blog/2019/11/26/Text-detection-in-number-plates/" data-id="ck3fqfacp0000vsn92bzsapgc" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://nayan.co/blog/2019/11/26/Text-detection-in-number-plates/" data-id="ck3frjhue000025qz02s29wv9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -308,9 +308,9 @@
             "name": "NayanTech"
         },
         "headline": "Text detection in number plates",
-        "image": "https://nayan.co/blog/blog/2019/11/26/Text-detection-in-number-plates/Figure_1.png",
+        "image": "https://nayan.co/blog/blog/2019/11/26/Text-detection-in-number-plates/Figure_2.png",
         "keywords": "",
-        "genre": "",
+        "genre": "AI",
         "datePublished": "2019-11-26",
         "dateCreated": "2019-11-26",
         "dateModified": "2019-11-26",
@@ -410,7 +410,7 @@
                             <a href="/blog/2019/11/26/Text-detection-in-number-plates/" class="thumbnail">
     
     
-        <span style="background-image:url(/blog/2019/11/26/Text-detection-in-number-plates/Figure_1.png)" alt="Text detection in number plates" class="thumbnail-image"></span>
+        <span style="background-image:url(/blog/2019/11/26/Text-detection-in-number-plates/Figure_2.png)" alt="Text detection in number plates" class="thumbnail-image"></span>
     
     
 </a>
@@ -418,7 +418,7 @@
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"></p>
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/AI/">AI</a></p>
                             <p class="item-title"><a href="/blog/2019/11/26/Text-detection-in-number-plates/" class="title">Text detection in number plates</a></p>
                             <p class="item-date"><time datetime="2019-11-26T15:21:29.000Z" itemprop="datePublished">2019-11-26</time></p>
                         </div>
@@ -453,7 +453,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/AI/">AI</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/AI/">AI</a><span class="category-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -542,7 +542,7 @@
       </div>
       <div class="col-lg-3">
         <ul class="footer-menu">
-          <li><a href="/">Home</a></li>
+          <li><a href="https://nayan.co/blog/">Home</a></li>
           <li><a href="/blog/archives/index.html">Archive</a></li>
           <li><a href="https://nayan.co" target="_blank">Nayan</a></li>
         </ul>
