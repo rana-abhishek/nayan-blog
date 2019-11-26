@@ -6,22 +6,23 @@
     
 
     
-    <title>name of the post | Nayan Blog</title>
+    <title>Text detection in number plates | Nayan Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="Injury,Fight,Shocking" />
+    <meta name="keywords" content="" />
     
-    <meta name="description" content="Hey this is my first blog for my website">
-<meta name="keywords" content="Injury,Fight,Shocking">
+    <meta name="description" content="Text detection in number platesOne of the vital modules in the optical character recognition(OCR) pipeline is text detectionand segmentation which is also called text localization. In this post, we wi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="name of the post">
-<meta property="og:url" content="https:&#x2F;&#x2F;nayan.co&#x2F;blog&#x2F;2019&#x2F;11&#x2F;21&#x2F;name-of-the-post&#x2F;index.html">
+<meta property="og:title" content="Text detection in number plates">
+<meta property="og:url" content="https:&#x2F;&#x2F;nayan.co&#x2F;blog&#x2F;2019&#x2F;11&#x2F;26&#x2F;Text-detection-in-number-plates&#x2F;index.html">
 <meta property="og:site_name" content="Nayan Blog">
-<meta property="og:description" content="Hey this is my first blog for my website">
+<meta property="og:description" content="Text detection in number platesOne of the vital modules in the optical character recognition(OCR) pipeline is text detectionand segmentation which is also called text localization. In this post, we wi">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;nayan.co&#x2F;blog&#x2F;2019&#x2F;11&#x2F;26&#x2F;Text-detection-in-number-plates&#x2F;Figure_1.png">
 <meta property="og:updated_time" content="2019-11-26T10:40:16.168Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;nayan.co&#x2F;blog&#x2F;2019&#x2F;11&#x2F;26&#x2F;Text-detection-in-number-plates&#x2F;Figure_1.png">
     
 
     
@@ -131,19 +132,19 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/blog/categories/Sports/">Sports</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/blog/categories/Sports/Baseball/">Baseball</a>
+    uncategorized
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-name-of-the-post" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Text-detection-in-number-plates" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        name of the post
+        Text detection in number plates
         </h1>
     
 
@@ -154,24 +155,19 @@
                 
     <div class="article-date">
       <i class="fa fa-calendar"></i>
-      <a href="/blog/2019/11/21/name-of-the-post/" class="article-date">
-         <time datetime="2019-11-21T15:34:32.000Z" itemprop="datePublished">2019-11-21</time>
+      <a href="/blog/2019/11/26/Text-detection-in-number-plates/" class="article-date">
+         <time datetime="2019-11-26T15:21:29.000Z" itemprop="datePublished">2019-11-26</time>
       </a>
     </div>
 
 
                 
   <div class="article-author">
-    Abhishek Rana
+    Akshay Bajpai
   </div>
 
 
                 
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/blog/tags/Fight/" rel="tag">Fight</a>, <a class="tag-link" href="/blog/tags/Injury/" rel="tag">Injury</a>, <a class="tag-link" href="/blog/tags/Shocking/" rel="tag">Shocking</a>
-    </div>
-
                 
 
                 
@@ -180,7 +176,60 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>Hey this is my first blog for my website</p>
+            <h1 id="Text-detection-in-number-plates"><a href="#Text-detection-in-number-plates" class="headerlink" title="Text detection in number plates"></a>Text detection in number plates</h1><p>One of the vital modules in the optical character recognition(OCR) pipeline is text detectionand segmentation which is also called text localization. In this post, we will apply variedpreprocessing techniques to the input image and find out how to localize text in theenhanced image, so that we can feed the segments to our text recognition network.</p>
+<h2 id="Image-Preprocessing"><a href="#Image-Preprocessing" class="headerlink" title="Image Preprocessing"></a>Image Preprocessing</h2><p>Sometimes images can be distorted, noisy and other problems that can scale back the OCRaccuracy. To make a better OCR pipeline, we need to do some image preprocessing.</p>
+<ul>
+<li>Grayscale the image: Generally you will get an image which is having 3channels(color images), we need to convert this image into a grayscale form whichcontains only one channel. We can also process images with three channels but itonly increases the complexity of the model and increases the processing time.OpenCV provides a built-in function that can do it for you.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import cv2</span><br><span class="line">grayscale_image = cv2.cvtColor(image, cv2.COLOR_BRG2GRAY)</span><br></pre></td></tr></table></figure>
+<p>Or you can convert the image to grayscale while reading the image.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#opencv reads image in BGR format</span><br><span class="line">graysacle_image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Noise reduction: Images come with various types of noises. OpenCV provides a lot ofnoise reduction function. I am using the Non-local Means Denoising algorithm.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">denoised_image = cv2.fastNlMeansDenoising(grayscale_img, None, 10, 7, 21)</span><br></pre></td></tr></table></figure>
+
+<img src="/blog/2019/11/26/Text-detection-in-number-plates/Figure_1.png" class="" title="Denoising">
+
+<ul>
+<li>Contrast adjustment: Sometimes we have low contrast images. This makes it difficultto separate text from the image background. We need high contrast text images forthe localization process. We can increase image contrast using Contrast LimitedAdaptive Histogram Equalization (CLAHE) among many other contrast enhancementmethods provided by skimage.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from  skimage import exposure</span><br><span class="line">contrast_enhanced_image = exposure.equalize_adapthist(denoised, clip_limit=0.03)</span><br></pre></td></tr></table></figure>
+
+<img src="/blog/2019/11/26/Text-detection-in-number-plates/Figure_2.png" class="" title="Contrast Adjustment">
+
+<p>So now we are done with image preprocessing let us move on to the second part, textlocalization.</p>
+<h2 id="Text-Localization"><a href="#Text-Localization" class="headerlink" title="Text Localization"></a>Text Localization</h2><p>In this part, we will see how to detect a large number of text region candidates andprogressively removes those less likely to contain text. Using the MSER feature descriptor tofind text candidates in the image. It works well for text because the consistent color and highcontrast of text lead to stable intensity profiles.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#constructor for MSER detector</span><br><span class="line">mser = cv2.MSER_create()</span><br><span class="line">regions, mser_bboxes = mser.detectRegions(contrast_enhance_image)</span><br></pre></td></tr></table></figure>
+
+<p>Along with the text MSER picked up many other stable regions that are not text. Now, thegeometric properties of text can be used to filter out non-text regions using simplethresholds.</p>
+<p>Before moving on with the filtering process, let’s write some functions to display the results ina comprehensible manner.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">#display images</span><br><span class="line">def pltShow(*images):</span><br><span class="line">    #count number of images to show</span><br><span class="line">    count = len(images)</span><br><span class="line">    #three images per columnn</span><br><span class="line">    Row = np.ceil(count / 3.)</span><br><span class="line">    for i in range(count):</span><br><span class="line">        plt.subplot(nRow, 3, i+1)</span><br><span class="line">        if len(images[i][0], cmap=’gray’)</span><br><span class="line">            plt.imshow(images[i][0], cmap=’gray’)</span><br><span class="line">        else:</span><br><span class="line">            plt.imshow(images[i][0])</span><br><span class="line">        #remove x-y axis from subplots</span><br><span class="line">        plt.xticks([])</span><br><span class="line">        plt.yticks([])</span><br><span class="line">        plt.title(images[i][1])</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line">#color each MSER region in image</span><br><span class="line">def colorRegion(image_like_arr, region):</span><br><span class="line">    image_like_arr[region[:, 1], region[:, 0], 0] = np.random.randint(low=100, high=256)</span><br><span class="line">    image_like_arr[region[:, 1], region[:, 0], 1] = np.random.randint(low=100, high=256)</span><br><span class="line">    image_like_arr[region[:, 1], region[:, 0], 2] = np.random.randint(low=100, high=256)</span><br><span class="line"></span><br><span class="line">    return image</span><br></pre></td></tr></table></figure>
+
+<p>The geometric properties we are going to use to discriminate between text and non-textregion are:</p>
+<ul>
+<li>Region area</li>
+<li>Region perimeter</li>
+<li>Aspect ratio</li>
+<li>Occupancy</li>
+<li>Compactness</li>
+</ul>
+<p>We will apply simple thresholds over these parameters to eliminate non-text regions. Firstlet’s write method to compute these parameters.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#values for the parameters</span><br><span class="line">AREA_LIM = 2.0e-4</span><br><span class="line">PERIMETER_LIM = 1e-4</span><br><span class="line">ASPECT_RATIO_LIM = 5.0</span><br><span class="line">OCCUPATION_LIM = (0.23, 0.90)</span><br><span class="line">COMPACTNESS_LIM = (3e-3, 1e-1)</span><br><span class="line"></span><br><span class="line">def getRegionShape(self, region): </span><br><span class="line">    return (max(region[:, 1]) - min(region[:, 1]), max(region[:, 0]) - min(region[:, 0]))</span><br><span class="line">    </span><br><span class="line">#compute area</span><br><span class="line">def getRegionArea(region):</span><br><span class="line">    return len(list(region))</span><br><span class="line"></span><br><span class="line">#compute perimeter</span><br><span class="line">def getRegionPerimeter(image, region):</span><br><span class="line">    #get top-left coordinate, width and height of the box enclosing the region</span><br><span class="line">    x, y, w, h = cv2.boundingRect(region)</span><br><span class="line">    return len(np.where(image[y:y+h, x:x+w] != 0)[0]))</span><br><span class="line">    </span><br><span class="line">#compute aspect ratio</span><br><span class="line">def getAspectRatio(region):    </span><br><span class="line">    return (1.0 * max(getRegionShape(region))) / (min(getRegionShape(region)) + 1e-4)</span><br><span class="line"></span><br><span class="line">#compute area occupied by the region area in the shape</span><br><span class="line">def getOccupyRate(region):</span><br><span class="line">    return (1.0 * getRegionArea(region)) / (getRegionShape(region)[0] *  \getRegionShape(region)[1] + 1.0e-10)</span><br><span class="line">    </span><br><span class="line">#compute compactness of the regio</span><br><span class="line">ndef getCompactness(region):    </span><br><span class="line">    return (1.0 * getRegionArea(region)) / (1.0 * getRegionPerimeter(region) ** 2)</span><br></pre></td></tr></table></figure>
+
+<p>Now apply these methods to filter out text regions  as follows:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#total number of MSER regions</span><br><span class="line">n1 = len(regions)</span><br><span class="line">bboxes=[]</span><br><span class="line">for i, region in enumerate(regions):</span><br><span class="line">    self.colorRegion(res, region)</span><br><span class="line">    if self.getRegionArea(region) &gt; self.grayImg.shape[0] * self.grayImg.shape[1] * AREA_LIM:</span><br><span class="line">   	    #number of regions meeting the area criteria</span><br><span class="line">    n2 += 1</span><br><span class="line">   		 self.colorRegion(res2, region)</span><br><span class="line"></span><br><span class="line">    if self.getRegionPerimeter(region) &gt; 2 * (self.grayImg.shape[0] + \</span><br><span class="line">        self.grayImg.shape[1]) * PERIMETER_LIM:</span><br><span class="line">   		#number of regions meeting the perimeter criteria</span><br><span class="line">        n3 += 1</span><br><span class="line">   		self.colorRegion(res3, region)</span><br><span class="line">			 </span><br><span class="line">        if self.getAspectRatio(region) &lt; ASPECT_RATIO_LIM:</span><br><span class="line">   				#number of regions meeting the aspect ratio criteria </span><br><span class="line">                n4 += 1</span><br><span class="line">   				self.colorRegion(res4, region)</span><br><span class="line"></span><br><span class="line">   				if (self.getOccupyRate(region) &gt; OCCUPATION_LIM[0]) and \ (self.getOccupyRate(region) &lt; OCCUPATION_LIM[1]):</span><br><span class="line">   					n5 += 1</span><br><span class="line">   					self.colorRegion(res5, region)</span><br><span class="line"></span><br><span class="line">   					if (self.getCompactness(region) &gt; \COMPACTNESS_LIM[0]) and \(self.getCompactness(region) &lt; \COMPACTNESS_LIM[1]):</span><br><span class="line">   						#final number of regions left </span><br><span class="line">                        n6 += 1</span><br><span class="line">   						self.colorRegion(res6, region)</span><br><span class="line">                        bboxes.append(mser_bboxes[i])</span><br></pre></td></tr></table></figure>
+
+<p>After eliminating non-text regions, I draw bounding boxes on the remaining regions andvoila, we have successfully detected and segmented the characters on the number plate.<br>Note: Apply NMS to remove overlapping bounding boxes.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for bbox in bboxes:</span><br><span class="line">   cv2.rectangle(img,(bbox[0]-1,bbox[1]-1),(bbox[0]+bbox[2]+1,box[1]+bbox[3]+1),(255,0,0), 1)</span><br></pre></td></tr></table></figure>
+
+<p>Enough coding. Let’s see some results.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">pltShow(&quot;MSER Result Analysis&quot;, \</span><br><span class="line">   	   (self.img, &quot;Image&quot;), \</span><br><span class="line">   	   (self.cannyImg, &quot;Canny&quot;), \</span><br><span class="line">   	   (res, &quot;MSER,(&#123;&#125; regions)&quot;.format(n1)), \</span><br><span class="line">   	   (res2, &quot;Area=&#123;&#125;,(&#123;&#125; regions)&quot;.format(config.mser_areaLimit, n2)), \</span><br><span class="line">   	   (res3, &quot;Perimeter=&#123;&#125;,(&#123;&#125; regions)&quot;.format(config.mser_perimeterLimit, n3)), \</span><br><span class="line">   	   (res4, &quot;Aspect Ratio=&#123;&#125;,(&#123;&#125; regions)&quot;.format(config.mser_aspectRatioLimit, n4)), \</span><br><span class="line">   	   (res5, &quot;Occupation=&#123;&#125;,(&#123;&#125; regions)&quot;.format(config.mser_occupationLimit, n5)), \</span><br><span class="line">   	   (res6, &quot;Compactness=&#123;&#125;,(&#123;&#125; regions)&quot;.format(config.mser_compactnessLimit, n6)), \</span><br><span class="line">   	   (boxRes, &quot;Segmented Image&quot;) \</span><br><span class="line">   	)</span><br></pre></td></tr></table></figure>
+
+<img src="/blog/2019/11/26/Text-detection-in-number-plates/Figure_3.png" class="" title="MSER Result Analysis">
+
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>In this post, we covered the various image preprocessing techniques and learned about howto perform text localization on number plates.</p>
 
         </div>
         <footer class="article-footer">
@@ -188,7 +237,7 @@
 
 
 
-    <a data-url="https://nayan.co/blog/2019/11/21/name-of-the-post/" data-id="ck3fqbqzp00010gweahtgc398" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://nayan.co/blog/2019/11/26/Text-detection-in-number-plates/" data-id="ck3fqbqzj00000gwed3s7do0y" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -258,17 +307,16 @@
             "@type": "Person",
             "name": "NayanTech"
         },
-        "headline": "name of the post",
-        "image": "https://nayan.co/blog",
-        "keywords": "Injury Fight Shocking",
-        "genre": "Sports Baseball",
-        "datePublished": "2019-11-21",
-        "dateCreated": "2019-11-21",
+        "headline": "Text detection in number plates",
+        "image": "https://nayan.co/blog/blog/2019/11/26/Text-detection-in-number-plates/Figure_1.png",
+        "keywords": "",
+        "genre": "",
+        "datePublished": "2019-11-26",
+        "dateCreated": "2019-11-26",
         "dateModified": "2019-11-26",
-        "url": "https://nayan.co/blog//2019/11/21/name-of-the-post/",
-        "description": "Hey this is my first blog for my website
-",
-        "wordCount": 9
+        "url": "https://nayan.co/blog//2019/11/26/Text-detection-in-number-plates/",
+        "description": "Text detection in number platesOne of the vital modules in the optical character recognition(OCR) pipeline is text detectionand segmentation which is also called text localization. In this post, we wi",
+        "wordCount": 1433
     }
 </script>
 
@@ -334,16 +382,12 @@
         
 <nav id="article-nav">
     
-        <a href="/blog/2019/11/26/Detecting-Lanes-using-Deep-Neural-Networks/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">newer</strong>
-        <p class="article-nav-title">
-        
-            Detecting Lanes using Deep Neural Networks
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
+        <a href="/blog/2019/11/26/Detecting-Lanes-using-Deep-Neural-Networks/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Detecting Lanes using Deep Neural Networks</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
     
 </nav>
 
