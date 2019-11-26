@@ -1,34 +1,101 @@
-#footer
-    background: color-footer-background
-    margin-top: 60px
-    color: color-grey
-    line-height: line-height
-    a
-        color: #ccc
-        text-decoration: none
-        &:hover
-            color: #fff
-    .credit
-        padding: 30px 30px 0px 30px
-    .footer-plugins
-        padding: 0px 30px 30px 30px
-    #back-to-top
-        background: color-background
-        color: #777
-        overflow: hidden
-        text-align: center
-        width: 60px
-        height: 30px
-        display: block
-        margin: 0 auto -30px
-        border-radius: 0 0 3px 3px
-        box-shadow: 0 1px 1px rgba(0,0,0,0.1)
-        &:hover
-            color: #444
-        i
-            font-size: 38px
-            line-height: 22px
-    .logo
-        width: logo-width * 0.8
-        height: logo-height * 0.8
-        background-size: logo-width * 0.8 logo-height * 0.8
+.footer {
+  background: linear-gradient(rgba(0, 0, 0, 0.92), rgba(22, 26, 37, 0.92)), url(css/images/nayan-logo.png) no-repeat left;
+  padding: 50px 0;
+  h3 {
+    color: rgb(234, 193, 44);
+    font-weight: 400;
+    font-size: 1.5em;
+  }
+  p {
+    font-size: 14px;
+    color: #f1f1f1;
+  }
+  img {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    height: 60px;
+    width: 225px;
+  }
+  .flexContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      .col-lg-6{
+          flex-basis: 50%;
+      }
+      .col-lg-3 {
+          flex-basis: 25%
+      }
+  }
+  .footer-links {
+      ul{
+        margin-top: 20px;
+      }
+    li {
+      display: inline-block;
+      background: #fff;
+      padding: 3px 8px;
+      text-align: center;
+      width: 30px;
+      border-radius: 2px;
+    }
+    text-align: center;
+    p {
+      color: #fff;
+      font-weight: 500;
+      span {
+        font-weight: 400;
+        color: #bbb;
+      }
+    }
+    .social-share {
+      margin-top: 20px;
+    }
+  }
+  .footer-menu {
+    float: right;
+    li {
+      text-align: right;
+      padding: 3px 0;
+      a {
+        color: #bbb;
+        &:hover {
+          color: rgb(234, 193, 44);
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 768px) {
+  .footer {
+    .flexContainer {
+      display: flex;
+      justify-content: center;
+      .col-lg-6{
+          flex-basis: auto;
+      }
+      .col-lg-3 {
+          flex-basis: auto
+      }
+    }
+    text-align: center;
+    .footer-links {}
+    .footer-menu {
+      float: none;
+      margin: 20px 0;
+      li {
+        text-align: none;
+        display: inline-block;
+        padding: 0 5px;
+      }
+    }
+  }
+}
+
+.credits{padding:25px 0; background:#424242; }
+.credits p{text-align:center; color:#faaf24; font-size:12px}
+.credits p span{color:#fff}
+
