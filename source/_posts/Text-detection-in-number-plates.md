@@ -4,6 +4,7 @@ date: 2019-11-26 15:21:29
 author: Akshay Bajpai
 category: AI
 tags: 
+- Deep Learning
 ---
 
 # Text detection in number plates
