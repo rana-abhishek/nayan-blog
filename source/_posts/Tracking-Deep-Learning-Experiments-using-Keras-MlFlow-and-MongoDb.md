@@ -1,5 +1,17 @@
+---
+title: Tracking Deep Learning experiments using Keras,MlFlow and MongoDB
+date: 2019-11-29 12:06:56
+author: Abhishek Bose
+category: AI
+tags:
+- Machine Learning
+- Deep Learning
+- Mlflow
+- Keras
+- MongoDB
+- Tracking
+---
 
-# Tracking Deep Learning Experiments using Keras, MlFlow and MongoDb
 
 
 {% asset_img banner.jpeg Banner %}
