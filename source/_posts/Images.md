@@ -30,7 +30,7 @@ You can draw different types of line on Canvas in Android. You can change it’s
 
 ### Step -2: Create bitmap of Image and canvas to draw
 
-The first step is to create a bitmap of Image on which you want to draw lines. We are using Glide to download image and to get bitmap from it.
+The first step is to create a bitmap of Image on which you want to draw lines. We are using [Glide](https://github.com/bumptech/glide "Glide") to download image and to get bitmap from it.
 
 ```
 private suspend fun getOriginalBitmapFromUrl(): Bitmap =
@@ -180,7 +180,7 @@ fun undo() {
 }
 ```
 
-For more sample code , see the Draw-Line.
+For more sample code , see the [Draw-Line](https://github.com/diwakarsinghdiwakar/Draw-Line "Draw Line")
 
 ## And we’re done!
 
