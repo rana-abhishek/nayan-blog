@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Tracking Deep Learning experiments using Keras,MlFlow and MongoDB | Nayan Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Deep Learning,Machine Learning,Mlflow,Keras,MongoDB,Tracking" />
+    
+    <meta name="description" content="It is late 2019 and Deep Learning is not a buzzword anymore. It is significantly used in the technology industry to attain feats of wonders which traditional machine learning and logic based techniqu">
+<meta name="keywords" content="Deep Learning,Machine Learning,Mlflow,Keras,MongoDB,Tracking">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tracking Deep Learning experiments using Keras,MlFlow and MongoDB">
+<meta property="og:url" content="https:&#x2F;&#x2F;nayan.co&#x2F;blog&#x2F;2019&#x2F;11&#x2F;29&#x2F;Tracking-Deep-Learning-Experiments-using-Keras-MlFlow-and-MongoDb&#x2F;index.html">
+<meta property="og:site_name" content="Nayan Blog">
+<meta property="og:description" content="It is late 2019 and Deep Learning is not a buzzword anymore. It is significantly used in the technology industry to attain feats of wonders which traditional machine learning and logic based techniqu">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;nayan.co&#x2F;blog&#x2F;2019&#x2F;11&#x2F;29&#x2F;Tracking-Deep-Learning-Experiments-using-Keras-MlFlow-and-MongoDb&#x2F;banner.jpeg">
+<meta property="og:updated_time" content="2019-12-03T06:28:17.981Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;nayan.co&#x2F;blog&#x2F;2019&#x2F;11&#x2F;29&#x2F;Tracking-Deep-Learning-Experiments-using-Keras-MlFlow-and-MongoDb&#x2F;banner.jpeg">
+    
+
+    
+
+    
+        <link rel="icon" href="/blog/css/images/favicon.png" />
+    
+
+    <link rel="stylesheet" href="/blog/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/blog/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/blog/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/blog/css/style.css">
+
+    <script src="/blog/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/blog/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/blog/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+<link rel="alternate" href="/blog/atom.xml" title="Nayan Blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/blog/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blog/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blog/categories/AI/">AI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blog/categories/Android/">Android</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blog/archives/index.html">Archive</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/blog/',
+        CONTENT_URL: '/blog/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/blog/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/blog/categories/AI/">AI</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Tracking-Deep-Learning-Experiments-using-Keras-MlFlow-and-MongoDb" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Tracking Deep Learning experiments using Keras,MlFlow and MongoDB
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/blog/2019/11/29/Tracking-Deep-Learning-Experiments-using-Keras-MlFlow-and-MongoDb/" class="article-date">
+         <time datetime="2019-11-29T12:06:56.000Z" itemprop="datePublished">2019-11-29</time>
+      </a>
+    </div>
+
+
+                
+  <div class="article-author">
+    Abhishek Bose
+  </div>
+
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/blog/tags/Deep-Learning/" rel="tag">Deep Learning</a>, <a class="tag-link" href="/blog/tags/Keras/" rel="tag">Keras</a>, <a class="tag-link" href="/blog/tags/Machine-Learning/" rel="tag">Machine Learning</a>, <a class="tag-link" href="/blog/tags/Mlflow/" rel="tag">Mlflow</a>, <a class="tag-link" href="/blog/tags/MongoDB/" rel="tag">MongoDB</a>, <a class="tag-link" href="/blog/tags/Tracking/" rel="tag">Tracking</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/blog/2019/11/29/Tracking-Deep-Learning-Experiments-using-Keras-MlFlow-and-MongoDb/banner.jpeg" class="" title="Banner">
+<p>It is late 2019 and <strong><em>Deep Learning</em></strong> is not a buzzword anymore. It is significantly used in the technology industry to attain feats of wonders which traditional machine learning and logic based techniques would take a longer time to achieve.</p>
+<p>The main ingredient in Deep Learning are <strong><em>Neural Networks</em></strong>, which are computation units called neurons, connected in a specific fashion to perform the task of learning and understanding data. When these networks become extremely deep and sophisticated, they are referred to as Deep Neural Networks and thus Deep Learning is performed.</p>
+<p>Neural Networks are so called because they are speculated to be imitating the human brain in some manner. Though it is not entirely true, but the learning mechanism is mostly similar in nature.</p>
+<p>A human brain learns about an object or concept when it visually experiences it for a longer amount of time. Similar to that, a neural network learns about objects and what they actually represent when it is fed with a large amount of data.</p>
+<p>For example, let us consider the <strong><em>LeNet architecture</em></strong> . It is a small two layered CNN (Convolution Neural Network). Convolution Neural Networks are a special kind of neural network where the mathematical computation being done at every layer are convolution operations.</p>
+<p>If enough images of a certain kind are fed to the <strong><em>LeNet</em></strong> architecture, it starts to understand and classify those images better.</p>
+<p>That was a simple introduction to what neural networks are and how they behave.</p>
+<p>In this article we will be mostly looking into three main frameworks which can ease out the developer experience of building these neural networks and tracking there performance efficiently.</p>
+<p>Nowadays, neural networks are heavily used for classifying objects, predicting data and other similar tasks by many companies out there. When it comes it to training neural networks and keeping track of their performance, the experience is not too subtle.</p>
+<p>When building a neural network, a developer would be trying out multiple datasets and experimenting with different hyperparameters. It is essential to keep a track a of these parameters and how they affect the output of the neural networks.</p>
+<p>Also debugging neural networks is an extremely cumbersome task. The output performance of different neural networks may vary due to different reasons. Some of the possible causes maybe inadequate data pre-processing, incorrect optimizer, a learning rate which is too low or too high. The number of variables which affect the performance of a neural network are quite a few. Hence it is essential that every parameter is properly tracked and maintained.</p>
+<p>Some of the available options present out there include the infamous <strong>*Tensorboard, Bokeh *</strong>to name a few.</p>
+<p>In this project we will be using <strong>MlFlow</strong> ,an open source platform to manage the entire deep learning development cycle. <strong>MlFlow</strong> allows developers to log and track the outputs of every experiment performed with great precision. We will be looking into <strong>MlFlow’s</strong> components with more detail in the subsequent sections.</p>
+<p>The framework we would be using for writing our neural networks and training them is <strong>Keras</strong>.</p>
+<p>We will be using the <strong>FashionMNIST</strong> dataset. It contains a total of 70000 gray scale images (training:test = 60000:10000) , each scaled at 28x28 associated with one from 10 classes. (Fig 1)</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*vIpkolZZ3jACO529n4QaJg.jpeg" alt="Fig 1: Fashion Mnist Dataset"></p>
+<p>The folder structure of our project looks as shown in Fig 2 below.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*NaIzdpiaiWAge7khYyRpmQ.png" alt="Fig 2: Project folder structure"></p>
+<p>The data folder contains our <strong><em>fashion mnist</em></strong> dataset files which will be used for training the model. The db folder contains the python driver code to perform operations on <strong><em>MongoDb</em></strong> collections. <strong><em>MongoDB</em></strong> is an extremely easy to use <strong><em>NoSql</em></strong> database which has been built keeping in developer satisfaction. It is easily integrable with modern day applications and has a large developer community contributing to it’s extensions regularly. The model folder contains piece of code with the neural network model definition. The <strong><em>mlruns</em></strong> folder is created automatically once <strong>*mlflow *</strong>is invoked in the main code.</p>
+<p><em>The aim of the project is to track multiple deep learning experiments and check how the outputs are affected when parameters are changed and data is changed.</em> Since we have only one dataset, we will split it into equal parts in order to simulate a multiple dataset scenario.</p>
+<p>Let’s start off with the <strong><em>create_dataset</em></strong> script, which is used to split the fashion mnist into equal parts and store them inside the data folder with proper serial number.</p>
+<p>In Fig 3 shown below, we import fashion mnist from <strong>*keras.datasets *</strong>and perform the necessary normalization step</p>
+<p><img src="https://cdn-images-1.medium.com/max/2452/1*_GWdTw2PkJDBl5HW3-Yjbw.png" alt="Fig 3: Loading Fashion Mnist Dataset from the keras library"></p>
+<p>Next, we write the methods to split the dataset into equal parts and save them with proper incremental serial numbers inside the data folder, inside the root project directory (Fig 4)</p>
+<p><img src="https://cdn-images-1.medium.com/max/2060/1*NVW44h1BejUe25D0SwUYog.png" alt="Fig 4: The large dataset is equally split into 12 equal parts for training"> equal parts for training*</p>
+<p>After this we go ahead and write the necessary driver code to manage our newly created dataset using <strong><em>MongoDb</em></strong>. Some might say that using <strong><em>MongoDb</em></strong> for such a small project might be an overkill, but personally I find <em>MongoDb</em> to be an excellent tool for managing data with flexibility. Given <strong><em>NoSql</em></strong>’s schema-less nature, managing collections and documents is a breeze.</p>
+<p>The ease with which any document can be edited in <strong><em>MongoDB</em></strong> is superb. The best part is, whenever a collection is queried , the result returned is a <strong>*json *</strong>making it extremely easy to be parsed using any programming language. Aggregation queries in mongo are also very simple and allows users to cross reference collections in a swift manner.</p>
+<p>In order to connect our python scripts with MongoDb we will be using <strong>pymongo</strong> which can be easily installed using the <strong><em>pip install pymongo</em></strong>. To install MongoDb, follow this tutorial <a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/" target="_blank" rel="noopener">***https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/</a>***</p>
+<p>Once MongoDb is installed and tested to be running properly on your system, create a new database called fashion_mnist. Inside the database create a new collection named dataset as shown in Fig 5 below.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*o3BTUrrPN6AeIogC" alt="Fig 5: Collection named as Dataset created in MongoDb"></p>
+<p>A great GUI to interact with <strong><em>MongoDb</em></strong> is <strong><em>robo3t</em></strong>. It’s free and easy to use. It can be downloaded from the following link <a href="https://robomongo.org/download" target="_blank" rel="noopener">***https://robomongo.org/download</a>.***Since our DB is setup and datasets are created, we can progress with the task of inserting necessary information into the dataset collection</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*ZRvtaMxnM8cP1tyeHtvUDA.png" alt="Fig 6: MongoClient is configured in db_ops python script"></p>
+<p>In Fig 6 shown above, we are importing <strong><em>MongoClient</em></strong> from the <strong><em>pymongo</em></strong> library which will essentially be used to connect to our <strong><em>mongoDB</em></strong> database.</p>
+<p>Fig 7 below describes <strong><em>mongoQueue</em></strong> class which has been written in order to interact with our dataset collection. In line 18 and 19, the collection name is initialized, which is used in all the member functions. The <strong>Enqueue*</strong> <em>method in line 6 is used to insert dataset information into the dataset collection. The <strong>*Dequeue</strong> <em>method in line 10 fetches the first dataset which has a <em>status <em>field of ‘</em></em></em>Not** <strong>*Processed</strong>’</em>.* The <strong>setAsProcessing*</strong> and <strong><em>setAsProcessed</em></strong> *methods are used to set the status field of respective dataset documents in the collection.</p>
+<p><img src="https://cdn-images-1.medium.com/max/3824/1*fI-pJh6D3dgLZJ5CfzNUow.png" alt="Fig 7: MongoQueue class for handling operations on the database"></p>
+<p><img src="https://cdn-images-1.medium.com/max/4096/1*YKzl3umNaRPxJsbSK8Q1lg.png" alt="Fig 8: Methods to insert data into MongoDB"><em>Fig 8: Methods to insert data into MongoDB</em></p>
+<p>We use the <strong><em>insert_into_db</em></strong> method shown in Fig 8, line 1, to insert information about our newly created datasets into our <strong>mongoDb</strong> dataset collection. In line 23 of the <em>main</em> function, we iterate over the dataset folder and call <strong>*insert_into_db</strong> *to insert the necessary information for that dataset into the collection. Once every dataset is successfully inserted into the collection, the fields appear as shown in Fig 9 below.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2452/0*qbkKHLQgdPkW-UNp" alt="Fig 9: Status of document in Dataset collection after data insertion"></p>
+<p>We can now define our model for training our deep learning network. Inside <strong>*model/model.py</strong> <em>we import all necessary **</em>keras*** packages to build our CNN network (shown in Fig 10a)</p>
+<p><img src="https://cdn-images-1.medium.com/max/2312/1*XnED-4kpiekoGLMgVMRESA.png" alt="Fig 10a: Importing all necessary keras packages"></p>
+<p>Fig 10b shows the model architecture. It is a simple two layer CNN, with two <strong>MaxPool</strong> layers and <strong>RelU</strong> activation in between. Two <strong>Dense</strong> layers are also added with 32 and 10 neurons respectively. I have also added a <strong>Dropout</strong> of 0.5 before the last Dense layer.</p>
+<p><img src="https://cdn-images-1.medium.com/max/4096/1*lmfvVEc3LxgxqeCGCCD-MQ.png" alt="Fig 10b: CNN model definintion"></p>
+<p>Now, in our <strong><em>train.py</em></strong> script we import all the necessary modules needed from the <strong><em>keras</em></strong> library to get on with our training. Along with all the <strong><em>keras</em></strong> libraries we import <strong>*mlflow *</strong>as well (Fig 11)</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*roE7f-YhPmBl5h9l1j_IMQ.png" alt="Fig 11: Importing packages in the main script"></p>
+<p>All the hyperparameters which will be used for training is stored in a config file named as <strong><em>train_config.json</em></strong>. This file is read (Fig 12a) and used for defining training parameters</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*A1cPbWr1ggscrwGyKNo-kw.png" alt="Fig 12a: parameters required for training are loaded"></p>
+<p>In Fig 12b, we have defined out training function , which takes arguments <strong>*trainX</strong> (<em>our training set) <em>,*</em>trainY** (*training set labels</em>) <em>and the **</em>model** *(CNN model)</p>
+<p><img src="https://cdn-images-1.medium.com/max/3040/1*aq-dCVGk-s4nBAg6KLOxPg.png" alt="Fig 12b: Function to start training"></p>
+<p>From line 38 (In Fig 13), the <strong>main</strong> function starts where we define our <strong>*MongoQueue</strong> <em>object using the **</em>MongoQueue** <em>class defined inside script mentioned before, **</em>db_ops.py <strong>. *As it can be seen in line 41, *</strong>mq*** is our object.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2396/1*jbtG75-OOC9yLrlAHJ-A2Q.png" alt="Fig 13: Main function which trains and also logs data using MlFlow"></p>
+<p>In line 42 (Fig 13) , a new CNN model is created by calling the <strong>*model</strong> <em>function which accepts the optimizer type as input. In this experiment we would be using the ‘*</em>SGD<strong>’ (</strong>Stochastic Gradient Descent**) to train the network .</p>
+<p>Everytime we invoke <strong><em>mlflow</em></strong> in our training code for logging, it is known as an <strong><em>mlflow</em></strong> run. <strong><em>MlFlow</em></strong> provides us with an API for starting and managing <strong><em>MlFlow</em></strong> runs. For example, Fig 14a and 14b</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*gBpvWcli4WNQxv5a" alt="Fig 14a: Mlflow example (importing and logging params)"></p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*-QzXE_uwytc_IEmQ" alt="Fig 14b: Context managers can be used to declare and Mlflow run"></p>
+<p>In our code we start the <strong><em>mlflow</em></strong> run using the python <strong><em>context manager</em></strong> as shown in Fig 14b.</p>
+<p>At line 46 in Fig 13, we define our our <strong><em>mlflow</em></strong> run with the run name as ‘<strong><em>fashion mnist</em></strong>’.* <em>All data and metrics will be logged under this run name on the **</em>mlflow*** dashboard.</p>
+<p>From line 47 we start a while loop, which continuously invokes the <strong>*dequeue</strong> <em>function from the *</em>MongoQeueue** class. What this does is fetches every row corresponding to a particular dataset from the dataset collection which has a <strong>status field = *Not Processed</strong> <em>(Fig 9). As soon as this dataset is fetched, *</em>setAsProcessing<strong>* <em>function is called in line 51 which sets the status of that dataset to *Processing *in *</em>MongoDb</strong>. This enables us to understand which dataset is currently being trained by our system. This is particularly helpful is large systems where there are multiple datasets and many training instances running in parallel.</p>
+<p>In lines 54 and 55, the datasets are loaded from the <strong>*data</strong> <em>folder corresponding to the **</em>dataset_id** *fetched from the db.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2004/1*5lWcOwjfGzwNATxdkJmmgA.png" alt="Fig 15: Loading Test data and evaluating on it"></p>
+<p>Lines 57 and 58 loads the test sets and the training is started at line 59 by calling the *train *function. We then use the trained model to predict our scores as shown in line 60 in Fig 15.</p>
+<p>The training output looks as shown below (Fig 16a and Fig 16b)</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*BCmu4INlyL7gPnxX" alt="Fig 16a: Model summary when starting to train"></p>
+<p><img src="https://cdn-images-1.medium.com/max/2628/0*eRC8Zm0avYe38JlE" alt="Fig 16b : Outputs after first epoch"></p>
+<p>As shown in Fig 16b, the training happens for an epoch and the evaluation metrics for the test dataset gets logged.</p>
+<p>All outputs of the evaluation done using our trained model can be logged using the <strong><em>MlFlow</em></strong> tracking api (as shown in Fig 17). The <strong><em>tracking</em></strong> <strong><em>API</em></strong> comes with functions such as <strong><em>log_param</em></strong> and <strong><em>log_metric</em></strong> which enables us to log every hyperparameter and output values into <strong><em>mlflow</em></strong>.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2676/1*9IeXuffAu2mnwh21O35NUg.png" alt="Fig 17: Using Mlflow’s tracking API to log metrics and params"></p>
+<p>The best feature about <strong><em>mlflow</em></strong> is the <strong><em>dashboard</em></strong> it provides. It has a very intuitive UI and can be used efficiently for tracking our experiments. The <strong><em>dashboard</em></strong> can be started easily by simply hitting <strong>*mlflow</strong> <strong>ui</strong> *in your terminal as shown in Fig 18 below.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*vhmPMa30-Gqnw6CQ" alt="Fig 18 : Starting the mlflow ui from the command line"></p>
+<p>To access the dashboard, just type <a href="http://localhost:5000/" target="_blank" rel="noopener">***http://localhost:5000</a>** *in your browser and hit enter.</p>
+<p><img src="https://cdn-images-1.medium.com/max/3200/0*rHX5D660ryqeUf7B" alt="Fig 19: Mlflow dashboard view."></p>
+<p>Fig 19 shows how the dashboard looks like. Each <strong><em>MlFlow</em></strong> run is logged using a <strong><em>run ID</em></strong> and a <strong><em>run name</em></strong>. The Parameters and the Metrics column log display the parameters and the metrics which were logged while we were training our model</p>
+<p><img src="https://cdn-images-1.medium.com/max/2288/0*DMhMMtoc1_ULtloJ" alt="Fig 20: Individual run information"></p>
+<p>Further clicking on a particular run, takes us to another page where we can display all information about our run (Fig 20)</p>
+<p><img src="https://cdn-images-1.medium.com/max/3200/0*t5qk_JlbTdNG89sy" alt="Fig 21a: Visualizing the test accuracy plot in mlflow"></p>
+<p><strong><em>MlFlow</em></strong> provides us with this amazing feature to generate plots for our results. As you can see in Fig 21a, the test accuracy change can be visualized across different training datasets and time. We can also choose to display other metrics such as the <strong><em>eval</em></strong> loss, as shown in Fig 21b. The smoothness of the curve can also be controlled using the slider.</p>
+<p><img src="https://cdn-images-1.medium.com/max/3200/0*mPZ1nM4I0kAY2yUU" alt="Fig 21b: Visualizing the eval loss plot in mlflow"></p>
+<p>We can also log important files or scripts in our project to MlFlow using the <strong><em>mlflow.log_artifact</em></strong> command . Fig 22a shows how to use it in your training script and Fig 22b shows how it is displayed on the mlflow dashboard.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*JV0scppcjBZy_isq7HJOpQ.png" alt="Fig 22a: Logging files as artifact on mlflow"></p>
+<p><img src="https://cdn-images-1.medium.com/max/2682/0*iEQvDCKtnOFCidSS" alt="Fig 22b: model file and db_ops file logged as artifact on mlflow"></p>
+<p>MlFlow also allows users to compare two runs simultaneously and generate plots for it. Just tick the check-boxes against the runs you want to compare and press on the blue <strong><em>Compare</em></strong> button (Fig 23)</p>
+<p><img src="https://cdn-images-1.medium.com/max/2096/0*5It-A9LbYnVJh9KM" alt="Fig 23: Mlflow dashboard which lists all the mlflow runs sequentially"></p>
+<p>Once you click on compare, another page pops up where all metrics and parameters of two different runs can be viewed and studied in parallel (Fig 24a)</p>
+<p><img src="https://cdn-images-1.medium.com/max/2976/0*0sNCbZBb3U61SzlQ" alt="Fig 24a: Comparing multiple mlflow runs in parallel"></p>
+<p>The user can also choose to display metrics such as accuracy and loss in parallel charts as shown in Fig 24b.</p>
+<p><img src="https://cdn-images-1.medium.com/max/3200/0*NQKwq3wMobxCLImI" alt="FIg 24b: Comparing multiple mlflow runs using visual plots based on metrics"></p>
+<p>Users can add an MlFlow Project file (a text file in <strong><em>YAML</em></strong> syntax) to their MlFlow project allowing them to package their code better and run and recreate results from any machine. The MlFlow Project file for our <strong><em>fashion_mnsit</em></strong> project looks as shown below in Fig 25a</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*JkMKeWYPlReYbuVn" alt="Fig 25a: MLfow project file containing entry points and also conda path"></p>
+<p>We can also specify a <strong><em>conda</em></strong> environment for our <strong><em>MlFlow</em></strong> project and specify a <strong><em>conda.yaml</em></strong> file (Fig 25b).</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*Bb3n9hCnxU6hblOm" alt="Fig 25b: Conda file specifying packages and dependencies in the specific environment"></p>
+<p>Hence, with this we conclude our project. Developers face several on-demand requirements for monitoring metrics during training a neural network. These metrics can be extremely critical for predicting the output of their neural networks and are also critical in understanding how to modify a neural network for better performance. Traditionally when starting off with deep learning experiments, many developers are unaware of proper tools to help them. I hope this was piece of writing was helpful in understanding how deep learning experiments can be conducted in a proper manner during production when large numbers of datasets are needed to be managed and multiple training and evaluation instances are required to be monitored.</p>
+<p><strong><em>MlFlow</em></strong> also has multiple other features which is beyond the scope of this tutorial and can be covered later. For any information on how to use <strong><em>MlFlow</em></strong> one can head to the <a href="https://mlflow.org/" target="_blank" rel="noopener">***https://mlflow.org/</a>***</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://nayan.co/blog/2019/11/29/Tracking-Deep-Learning-Experiments-using-Keras-MlFlow-and-MongoDb/" data-id="ck3pheol1001bz1wf7tbr9ldg" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "NayanTech"
+        },
+        "headline": "Tracking Deep Learning experiments using Keras,MlFlow and MongoDB",
+        "image": "https://nayan.co/blog/blog/2019/11/29/Tracking-Deep-Learning-Experiments-using-Keras-MlFlow-and-MongoDb/banner.jpeg",
+        "keywords": "Deep Learning Machine Learning Mlflow Keras MongoDB Tracking",
+        "genre": "AI",
+        "datePublished": "2019-11-29",
+        "dateCreated": "2019-11-29",
+        "dateModified": "2019-12-03",
+        "url": "https://nayan.co/blog//2019/11/29/Tracking-Deep-Learning-Experiments-using-Keras-MlFlow-and-MongoDb/",
+        "description": "
+It is late 2019 and Deep Learning is not a buzzword anymore. It is significantly used in the technology industry to attain feats of wonders which traditional machine learning and logic based techniqu",
+        "wordCount": 2575
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="youtube" href="https://www.youtube.com/channel/UCgglHs52FLwmQNyxND57c2Q" target="_blank" rel="noopener">
+                        <i class="icon fa fa-youtube"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/nayancam" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/NAYANCAM/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/nayantechno/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin" href="https://in.linkedin.com/company/nayancam" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/blog/2019/11/29/Android-Testing-Strategy/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Android Testing Strategy
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/blog/2019/11/28/License-plate-recognition-using-Attention-based-OCR/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">License plate recognition using Attention based OCR</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/12/02/Images/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blog/2019/12/02/Images/SC1.jpg)" alt="Drawing Lines on Images" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/Android/">Android</a></p>
+                            <p class="item-title"><a href="/blog/2019/12/02/Images/" class="title">Drawing Lines on Images</a></p>
+                            <p class="item-date"><time datetime="2019-12-02T19:27:37.000Z" itemprop="datePublished">2019-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/11/29/Android-Testing-Strategy/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blog/2019/11/29/Android-Testing-Strategy/testing_strategy.jpeg)" alt="Android Testing Strategy" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/Android/">Android</a></p>
+                            <p class="item-title"><a href="/blog/2019/11/29/Android-Testing-Strategy/" class="title">Android Testing Strategy</a></p>
+                            <p class="item-date"><time datetime="2019-11-29T17:07:05.000Z" itemprop="datePublished">2019-11-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/11/29/Tracking-Deep-Learning-Experiments-using-Keras-MlFlow-and-MongoDb/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blog/2019/11/29/Tracking-Deep-Learning-Experiments-using-Keras-MlFlow-and-MongoDb/banner.jpeg)" alt="Tracking Deep Learning experiments using Keras,MlFlow and MongoDB" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/AI/">AI</a></p>
+                            <p class="item-title"><a href="/blog/2019/11/29/Tracking-Deep-Learning-Experiments-using-Keras-MlFlow-and-MongoDb/" class="title">Tracking Deep Learning experiments using Keras,MlFlow and MongoDB</a></p>
+                            <p class="item-date"><time datetime="2019-11-29T12:06:56.000Z" itemprop="datePublished">2019-11-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/11/28/License-plate-recognition-using-Attention-based-OCR/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blog/2019/11/28/License-plate-recognition-using-Attention-based-OCR/p1.png)" alt="License plate recognition using Attention based OCR" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/AI/">AI</a></p>
+                            <p class="item-title"><a href="/blog/2019/11/28/License-plate-recognition-using-Attention-based-OCR/" class="title">License plate recognition using Attention based OCR</a></p>
+                            <p class="item-date"><time datetime="2019-11-28T12:06:56.000Z" itemprop="datePublished">2019-11-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/11/27/sharing-modules-across-android-apps/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blog/2019/11/27/sharing-modules-across-android-apps/modules.jpg)" alt="Sharing modules across Android apps" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/Android/">Android</a></p>
+                            <p class="item-title"><a href="/blog/2019/11/27/sharing-modules-across-android-apps/" class="title">Sharing modules across Android apps</a></p>
+                            <p class="item-date"><time datetime="2019-11-27T13:00:00.000Z" itemprop="datePublished">2019-11-27</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/AI/">AI</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Android/">Android</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/11/">November 2019</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/AOCR/" rel="tag">AOCR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Advance-Driver-Assistance/" rel="tag">Advance Driver Assistance</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Android-Testing/" rel="tag">Android Testing</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Autonomous-Driving/" rel="tag">Autonomous Driving</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Deep-Learning/" rel="tag">Deep Learning</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Instrumentation-Test/" rel="tag">Instrumentation Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Keras/" rel="tag">Keras</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Lane-Detection/" rel="tag">Lane Detection</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/License-Plates/" rel="tag">License Plates</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/License-Plates-Recognition/" rel="tag">License Plates Recognition</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Machine-Learning/" rel="tag">Machine Learning</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mlflow/" rel="tag">Mlflow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/MongoDB/" rel="tag">MongoDB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/OCR/" rel="tag">OCR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Tracking/" rel="tag">Tracking</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Unit-Test/" rel="tag">Unit Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/android/" rel="tag">android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/git-submodules/" rel="tag">git submodules</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/blog/tags/AOCR/" style="font-size: 10px;">AOCR</a> <a href="/blog/tags/Advance-Driver-Assistance/" style="font-size: 10px;">Advance Driver Assistance</a> <a href="/blog/tags/Android-Testing/" style="font-size: 10px;">Android Testing</a> <a href="/blog/tags/Autonomous-Driving/" style="font-size: 10px;">Autonomous Driving</a> <a href="/blog/tags/Deep-Learning/" style="font-size: 20px;">Deep Learning</a> <a href="/blog/tags/Instrumentation-Test/" style="font-size: 10px;">Instrumentation Test</a> <a href="/blog/tags/Keras/" style="font-size: 10px;">Keras</a> <a href="/blog/tags/Lane-Detection/" style="font-size: 10px;">Lane Detection</a> <a href="/blog/tags/License-Plates/" style="font-size: 10px;">License Plates</a> <a href="/blog/tags/License-Plates-Recognition/" style="font-size: 10px;">License Plates Recognition</a> <a href="/blog/tags/Machine-Learning/" style="font-size: 15px;">Machine Learning</a> <a href="/blog/tags/Mlflow/" style="font-size: 10px;">Mlflow</a> <a href="/blog/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/blog/tags/OCR/" style="font-size: 10px;">OCR</a> <a href="/blog/tags/Tracking/" style="font-size: 10px;">Tracking</a> <a href="/blog/tags/Unit-Test/" style="font-size: 10px;">Unit Test</a> <a href="/blog/tags/android/" style="font-size: 10px;">android</a> <a href="/blog/tags/git-submodules/" style="font-size: 10px;">git submodules</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://nayan.co">Nayan</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <section class="footer">
+  <div class="container">
+    <div class="container-inner">
+        <div class="flexContainer">
+      <div class="col-lg-3">
+
+        <h3>NAYAN (Partner's offices)</h3>
+        <p>Gulf Business Machines (UCMC LLC.) <br>
+          Emarat Atrium Building, Wing B, 3rd Floor<br>
+          Opposite Holiday Inn (Al Safa)<br>
+          Sheikh Zayed Road, PO Box 9226, Dubai, UAE
+        </p>
+
+
+      </div>
+      <div class="col-lg-6">
+        <div class="footer-links">
+          <img src="https://nayan.co/blog/css/images/nayan-logo.png" alt="">
+          <p><span>Our Goal: </span> Stewarding and Monitoring all roadways, on demand<p>
+
+          <ul>
+          <li><a href="https://www.facebook.com/NAYANCAM/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="https://twitter.com/nayancam" target="_blank"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.youtube.com/channel/UCgglHs52FLwmQNyxND57c2Q" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
+          <li><a href="https://www.instagram.com/nayantechno/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <ul class="footer-menu">
+          <li><a href="https://nayan.co/blog/">Home</a></li>
+          <li><a href="/blog/archives/index.html">Archive</a></li>
+          <li><a href="https://nayan.co" target="_blank">Nayan</a></li>
+        </ul>
+
+      </div>
+    </div>
+    </div>
+  </div>
+
+</section>
+<section class="credits">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+
+        <p>&copy; 2019 NAYAN <span> All Rights Reserved</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+        
+
+
+    
+        <script src="/blog/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/blog/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/blog/js/main.js"></script>
+
+    </div>
+</body>
+</html>

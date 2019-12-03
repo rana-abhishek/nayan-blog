@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Drawing Lines on Images | Nayan Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="" />
+    
+    <meta name="description" content="You can draw different types of line on Canvas in Android. You can change it’s color, stroke, effect, etc. You can redo or undo lines , can select and delete them. Here we will see the basics of drawi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Drawing Lines on Images">
+<meta property="og:url" content="https:&#x2F;&#x2F;nayan.co&#x2F;blog&#x2F;2019&#x2F;12&#x2F;02&#x2F;Images&#x2F;index.html">
+<meta property="og:site_name" content="Nayan Blog">
+<meta property="og:description" content="You can draw different types of line on Canvas in Android. You can change it’s color, stroke, effect, etc. You can redo or undo lines , can select and delete them. Here we will see the basics of drawi">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;nayan.co&#x2F;blog&#x2F;2019&#x2F;12&#x2F;02&#x2F;Images&#x2F;SC1.jpg">
+<meta property="og:updated_time" content="2019-12-03T06:28:17.977Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;nayan.co&#x2F;blog&#x2F;2019&#x2F;12&#x2F;02&#x2F;Images&#x2F;SC1.jpg">
+    
+
+    
+
+    
+        <link rel="icon" href="/blog/css/images/favicon.png" />
+    
+
+    <link rel="stylesheet" href="/blog/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/blog/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/blog/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/blog/css/style.css">
+
+    <script src="/blog/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/blog/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/blog/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+<link rel="alternate" href="/blog/atom.xml" title="Nayan Blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/blog/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blog/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blog/categories/AI/">AI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blog/categories/Android/">Android</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blog/archives/index.html">Archive</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/blog/',
+        CONTENT_URL: '/blog/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/blog/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/blog/categories/Android/">Android</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Images" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Drawing Lines on Images
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/blog/2019/12/02/Images/" class="article-date">
+         <time datetime="2019-12-02T19:27:37.000Z" itemprop="datePublished">2019-12-02</time>
+      </a>
+    </div>
+
+
+                
+  <div class="article-author">
+    Diwakar Singh
+  </div>
+
+
+                
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>You can draw different types of line on Canvas in Android. You can change it’s color, stroke, effect, etc. You can redo or undo lines , can select and delete them. Here we will see the basics of drawing line on Canvas.</p>
+<h2 id="Let’s-get-started"><a href="#Let’s-get-started" class="headerlink" title="Let’s get started"></a>Let’s get started</h2><h3 id="Step-1-Add-dependencies"><a href="#Step-1-Add-dependencies" class="headerlink" title="Step -1: Add dependencies"></a>Step -1: Add dependencies</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// PhotoView</span><br><span class="line">    implementation &apos;com.github.chrisbanes:PhotoView:2.3.0&apos;</span><br><span class="line">//Glide</span><br><span class="line">    implementation &apos;com.github.bumptech.glide:glide:4.9.0&apos;</span><br><span class="line">    annotationProcessor &apos;com.github.bumptech.glide:compiler:4.9.0&apos;</span><br><span class="line">// Timber for logging</span><br><span class="line">    implementation &quot;com.jakewharton.timber:timber:$&#123;rootProject.ext.timber_version&#125;&quot;</span><br><span class="line">// Coroutines</span><br><span class="line">    implementation &quot;org.jetbrains.kotlinx:kotlinx-coroutines-core:$&#123;rootProject.ext.coroutines_version&#125;&quot;</span><br><span class="line">    implementation &quot;org.jetbrains.kotlinx:kotlinx-coroutines-android:$&#123;rootProject.ext.coroutines_version&#125;&quot;</span><br><span class="line">    implementation &quot;androidx.lifecycle:lifecycle-viewmodel-ktx:$&#123;rootProject.ext.lifecycle_extensions_version&#125;&quot;</span><br><span class="line">    implementation &quot;androidx.lifecycle:lifecycle-runtime-ktx:$&#123;rootProject.ext.lifecycle_extensions_version&#125;&quot;</span><br><span class="line">    implementation &quot;androidx.lifecycle:lifecycle-livedata-ktx:$&#123;rootProject.ext.lifecycle_extensions_version&#125;&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step-2-Create-bitmap-of-Image-and-canvas-to-draw"><a href="#Step-2-Create-bitmap-of-Image-and-canvas-to-draw" class="headerlink" title="Step -2: Create bitmap of Image and canvas to draw"></a>Step -2: Create bitmap of Image and canvas to draw</h3><p>The first step is to create a bitmap of Image on which you want to draw lines. We are using Glide to download image and to get bitmap from it.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private suspend fun getOriginalBitmapFromUrl(): Bitmap =</span><br><span class="line">    withContext(Dispatchers.IO) &#123;</span><br><span class="line">        Glide.with(this@MainActivity)</span><br><span class="line">            .asBitmap()</span><br><span class="line">            .load(Constants.IMAGE_URL)</span><br><span class="line">            .submit().get()</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step-3-Create-event-listener"><a href="#Step-3-Create-event-listener" class="headerlink" title="Step -3: Create event listener"></a>Step -3: Create event listener</h3><p>Create an interface to handle onTouch events of photoviewattacher.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fun touchPoints(x: Float, y: Float)</span><br><span class="line">fun closeStroke()</span><br><span class="line">fun discardStroke()</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step-4-Create-your-overlay-view-attacher"><a href="#Step-4-Create-your-overlay-view-attacher" class="headerlink" title="Step -4: Create your overlay view attacher"></a>Step -4: Create your overlay view attacher</h3><p>Now we create overlayview attacher, where we define onTouch events.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">MotionEvent.ACTION_UP -&gt; &#123;</span><br><span class="line">    if (multiTouch) &#123;</span><br><span class="line">        onPencilDrawListener.discardStroke()</span><br><span class="line">        multiTouch = false</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        onPencilDrawListener.closeStroke()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MotionEvent.ACTION_DOWN -&gt; &#123;</span><br><span class="line">    if (!multiTouch &amp;&amp; isSelectModeEnabled) &#123;</span><br><span class="line">        sendEventToListener(ev)</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        super.onTouch(v, ev)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MotionEvent.ACTION_MOVE -&gt; &#123;</span><br><span class="line">    if (!multiTouch) &#123;</span><br><span class="line">        sendEventToListener(ev)</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        super.onTouch(v, ev)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Step-5-Create-your-overlay-photo-view"><a href="#Step-5-Create-your-overlay-photo-view" class="headerlink" title="Step -5: Create your overlay photo view"></a>Step -5: Create your overlay photo view</h3><p>Create your own imageview by extending it from photoview and added some properties</p>
+<h4 id="a-For-selecting-and-deleting-lines"><a href="#a-For-selecting-and-deleting-lines" class="headerlink" title="a. For selecting and deleting lines:"></a>a. For selecting and deleting lines:</h4><p>If the angle at touch point is an obtuse angle and area of triangle formed is under the threshold limit, then the current line is found to be selected</p>
+<h4 id="To-calculate-area"><a href="#To-calculate-area" class="headerlink" title="To calculate area:"></a>To calculate area:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">abs((touchX * (y1 — y2) + x1 * (y2 — touchY) + x2 * (touchY — y1)) / 2)</span><br></pre></td></tr></table></figure>
+
+<p>where (x1,y1) and (x2,y2) are endpoints of selected line.</p>
+<h4 id="To-calculate-angle"><a href="#To-calculate-angle" class="headerlink" title="To calculate angle:"></a>To calculate angle:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">private fun calculateAngle(</span><br><span class="line">    tapPoint: List&lt;Float&gt;,</span><br><span class="line">    linePoint1: List&lt;Float&gt;,</span><br><span class="line">    linePoint2: List&lt;Float&gt;</span><br><span class="line">): Float &#123;</span><br><span class="line">    // Square of lengths be a2, b2, c2</span><br><span class="line">    val a2 = lengthSquare(linePoint1, linePoint2)</span><br><span class="line">    val b2 = lengthSquare(tapPoint, linePoint2)</span><br><span class="line">    val c2 = lengthSquare(tapPoint, linePoint1)</span><br><span class="line"></span><br><span class="line">    // length of sides be b, c</span><br><span class="line">    val b = sqrt(b2)</span><br><span class="line">    val c = sqrt(c2)</span><br><span class="line"></span><br><span class="line">    // From Cosine law</span><br><span class="line">    var alpha = acos((b2 + c2 - a2) / (2f * b * c))</span><br><span class="line"></span><br><span class="line">    // Converting to degree</span><br><span class="line">    alpha = (alpha * 180 / PI).toFloat()</span><br><span class="line"></span><br><span class="line">    return alpha</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="b-For-redo-operation"><a href="#b-For-redo-operation" class="headerlink" title="b. For redo operation:"></a>b. For redo operation:</h4><p>If last undo operation list is not empty, add the first line points from last undo operation list to overlay data list and remove it from there.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">fun redo() &#123;</span><br><span class="line">    if (lastUndoOperation != null) &#123;</span><br><span class="line">        if (lastUndoOperation?.isDeleteOperation == true) &#123;</span><br><span class="line">            val ids = lastUndoOperation?.overlayDataList?.map &#123; overlayData -&gt; overlayData.id &#125;</span><br><span class="line">            if (ids != null) &#123;</span><br><span class="line">                for (data in overlayDataList) &#123;</span><br><span class="line">                    if (data.id in ids) &#123;</span><br><span class="line">                        data.isDeleted = true</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            lastUndoOperation?.overlayDataList?.first()?.let &#123; overlayDataList.add(it) &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        lastUndoOperation?.let &#123; overlayDataOperations.add(it) &#125;</span><br><span class="line">        lastUndoOperation = null</span><br><span class="line">        invalidate()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="c-For-undo-operation"><a href="#c-For-undo-operation" class="headerlink" title="c. For undo operation:"></a>c. For undo operation:</h4><p>If there is any point present in overlay data list then delete it from there and added it in last undo operation list.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">fun undo() &#123;</span><br><span class="line">    if (overlayDataOperations.size &gt; 0) &#123;</span><br><span class="line">        val index = overlayDataOperations.lastIndex</span><br><span class="line">        lastUndoOperation = overlayDataOperations[index]</span><br><span class="line">        overlayDataOperations.removeAt(index)</span><br><span class="line"></span><br><span class="line">        if (lastUndoOperation?.isDeleteOperation == true) &#123;</span><br><span class="line">            val ids = lastUndoOperation?.overlayDataList?.map &#123; overlayData -&gt; overlayData.id &#125;</span><br><span class="line">            if (ids != null) &#123;</span><br><span class="line">                for (data in overlayDataList) &#123;</span><br><span class="line">                    if (data.id in ids) &#123;</span><br><span class="line">                        data.isDeleted = false</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            val id = lastUndoOperation?.overlayDataList?.first()?.id</span><br><span class="line">            overlayDataList.removeAt(overlayDataList.indexOfFirst &#123; overlayData -&gt; overlayData.id == id &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        invalidate()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>For more sample code , see the Draw-Line.</p>
+<h2 id="And-we’re-done"><a href="#And-we’re-done" class="headerlink" title="And we’re done!"></a>And we’re done!</h2><h4 id="Screenshots"><a href="#Screenshots" class="headerlink" title="Screenshots:"></a>Screenshots:</h4><img src="/blog/2019/12/02/Images/SC1.jpg" class="" title="Image_1">
+<img src="/blog/2019/12/02/Images/SC2.jpg" class="" title="Image_2">
+<img src="/blog/2019/12/02/Images/SC3.jpg" class="" title="Image_3">
+<img src="/blog/2019/12/02/Images/SC4.jpg" class="" title="Image_4">
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://nayan.co/blog/2019/12/02/Images/" data-id="ck3pheohz0001z1wf8g0h0tpy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "NayanTech"
+        },
+        "headline": "Drawing Lines on Images",
+        "image": "https://nayan.co/blog/blog/2019/12/02/Images/SC1.jpg",
+        "keywords": "",
+        "genre": "Android",
+        "datePublished": "2019-12-02",
+        "dateCreated": "2019-12-02",
+        "dateModified": "2019-12-03",
+        "url": "https://nayan.co/blog//2019/12/02/Images/",
+        "description": "You can draw different types of line on Canvas in Android. You can change it’s color, stroke, effect, etc. You can redo or undo lines , can select and delete them. Here we will see the basics of drawi",
+        "wordCount": 1486
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="youtube" href="https://www.youtube.com/channel/UCgglHs52FLwmQNyxND57c2Q" target="_blank" rel="noopener">
+                        <i class="icon fa fa-youtube"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/nayancam" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/NAYANCAM/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/nayantechno/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin" href="https://in.linkedin.com/company/nayancam" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/blog/2019/11/29/Android-Testing-Strategy/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Android Testing Strategy</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/12/02/Images/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blog/2019/12/02/Images/SC1.jpg)" alt="Drawing Lines on Images" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/Android/">Android</a></p>
+                            <p class="item-title"><a href="/blog/2019/12/02/Images/" class="title">Drawing Lines on Images</a></p>
+                            <p class="item-date"><time datetime="2019-12-02T19:27:37.000Z" itemprop="datePublished">2019-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/11/29/Android-Testing-Strategy/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blog/2019/11/29/Android-Testing-Strategy/testing_strategy.jpeg)" alt="Android Testing Strategy" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/Android/">Android</a></p>
+                            <p class="item-title"><a href="/blog/2019/11/29/Android-Testing-Strategy/" class="title">Android Testing Strategy</a></p>
+                            <p class="item-date"><time datetime="2019-11-29T17:07:05.000Z" itemprop="datePublished">2019-11-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/11/29/Tracking-Deep-Learning-Experiments-using-Keras-MlFlow-and-MongoDb/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blog/2019/11/29/Tracking-Deep-Learning-Experiments-using-Keras-MlFlow-and-MongoDb/banner.jpeg)" alt="Tracking Deep Learning experiments using Keras,MlFlow and MongoDB" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/AI/">AI</a></p>
+                            <p class="item-title"><a href="/blog/2019/11/29/Tracking-Deep-Learning-Experiments-using-Keras-MlFlow-and-MongoDb/" class="title">Tracking Deep Learning experiments using Keras,MlFlow and MongoDB</a></p>
+                            <p class="item-date"><time datetime="2019-11-29T12:06:56.000Z" itemprop="datePublished">2019-11-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/11/28/License-plate-recognition-using-Attention-based-OCR/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blog/2019/11/28/License-plate-recognition-using-Attention-based-OCR/p1.png)" alt="License plate recognition using Attention based OCR" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/AI/">AI</a></p>
+                            <p class="item-title"><a href="/blog/2019/11/28/License-plate-recognition-using-Attention-based-OCR/" class="title">License plate recognition using Attention based OCR</a></p>
+                            <p class="item-date"><time datetime="2019-11-28T12:06:56.000Z" itemprop="datePublished">2019-11-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/11/27/sharing-modules-across-android-apps/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blog/2019/11/27/sharing-modules-across-android-apps/modules.jpg)" alt="Sharing modules across Android apps" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/Android/">Android</a></p>
+                            <p class="item-title"><a href="/blog/2019/11/27/sharing-modules-across-android-apps/" class="title">Sharing modules across Android apps</a></p>
+                            <p class="item-date"><time datetime="2019-11-27T13:00:00.000Z" itemprop="datePublished">2019-11-27</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/AI/">AI</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Android/">Android</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/11/">November 2019</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/AOCR/" rel="tag">AOCR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Advance-Driver-Assistance/" rel="tag">Advance Driver Assistance</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Android-Testing/" rel="tag">Android Testing</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Autonomous-Driving/" rel="tag">Autonomous Driving</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Deep-Learning/" rel="tag">Deep Learning</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Instrumentation-Test/" rel="tag">Instrumentation Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Keras/" rel="tag">Keras</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Lane-Detection/" rel="tag">Lane Detection</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/License-Plates/" rel="tag">License Plates</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/License-Plates-Recognition/" rel="tag">License Plates Recognition</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Machine-Learning/" rel="tag">Machine Learning</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mlflow/" rel="tag">Mlflow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/MongoDB/" rel="tag">MongoDB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/OCR/" rel="tag">OCR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Tracking/" rel="tag">Tracking</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Unit-Test/" rel="tag">Unit Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/android/" rel="tag">android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/git-submodules/" rel="tag">git submodules</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/blog/tags/AOCR/" style="font-size: 10px;">AOCR</a> <a href="/blog/tags/Advance-Driver-Assistance/" style="font-size: 10px;">Advance Driver Assistance</a> <a href="/blog/tags/Android-Testing/" style="font-size: 10px;">Android Testing</a> <a href="/blog/tags/Autonomous-Driving/" style="font-size: 10px;">Autonomous Driving</a> <a href="/blog/tags/Deep-Learning/" style="font-size: 20px;">Deep Learning</a> <a href="/blog/tags/Instrumentation-Test/" style="font-size: 10px;">Instrumentation Test</a> <a href="/blog/tags/Keras/" style="font-size: 10px;">Keras</a> <a href="/blog/tags/Lane-Detection/" style="font-size: 10px;">Lane Detection</a> <a href="/blog/tags/License-Plates/" style="font-size: 10px;">License Plates</a> <a href="/blog/tags/License-Plates-Recognition/" style="font-size: 10px;">License Plates Recognition</a> <a href="/blog/tags/Machine-Learning/" style="font-size: 15px;">Machine Learning</a> <a href="/blog/tags/Mlflow/" style="font-size: 10px;">Mlflow</a> <a href="/blog/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/blog/tags/OCR/" style="font-size: 10px;">OCR</a> <a href="/blog/tags/Tracking/" style="font-size: 10px;">Tracking</a> <a href="/blog/tags/Unit-Test/" style="font-size: 10px;">Unit Test</a> <a href="/blog/tags/android/" style="font-size: 10px;">android</a> <a href="/blog/tags/git-submodules/" style="font-size: 10px;">git submodules</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://nayan.co">Nayan</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <section class="footer">
+  <div class="container">
+    <div class="container-inner">
+        <div class="flexContainer">
+      <div class="col-lg-3">
+
+        <h3>NAYAN (Partner's offices)</h3>
+        <p>Gulf Business Machines (UCMC LLC.) <br>
+          Emarat Atrium Building, Wing B, 3rd Floor<br>
+          Opposite Holiday Inn (Al Safa)<br>
+          Sheikh Zayed Road, PO Box 9226, Dubai, UAE
+        </p>
+
+
+      </div>
+      <div class="col-lg-6">
+        <div class="footer-links">
+          <img src="https://nayan.co/blog/css/images/nayan-logo.png" alt="">
+          <p><span>Our Goal: </span> Stewarding and Monitoring all roadways, on demand<p>
+
+          <ul>
+          <li><a href="https://www.facebook.com/NAYANCAM/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="https://twitter.com/nayancam" target="_blank"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.youtube.com/channel/UCgglHs52FLwmQNyxND57c2Q" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
+          <li><a href="https://www.instagram.com/nayantechno/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <ul class="footer-menu">
+          <li><a href="https://nayan.co/blog/">Home</a></li>
+          <li><a href="/blog/archives/index.html">Archive</a></li>
+          <li><a href="https://nayan.co" target="_blank">Nayan</a></li>
+        </ul>
+
+      </div>
+    </div>
+    </div>
+  </div>
+
+</section>
+<section class="credits">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+
+        <p>&copy; 2019 NAYAN <span> All Rights Reserved</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+        
+
+
+    
+        <script src="/blog/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/blog/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/blog/js/main.js"></script>
+
+    </div>
+</body>
+</html>

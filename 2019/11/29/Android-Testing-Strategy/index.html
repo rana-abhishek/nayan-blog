@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Android Testing Strategy | Nayan Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Instrumentation Test,Unit Test,Android Testing" />
+    
+    <meta name="description" content="Testing android application is quite hard. There is no set guidelines for us to follow. When ever I started thinking of testing my application I always get confused where to start, should I write un">
+<meta name="keywords" content="Instrumentation Test,Unit Test,Android Testing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Testing Strategy">
+<meta property="og:url" content="https:&#x2F;&#x2F;nayan.co&#x2F;blog&#x2F;2019&#x2F;11&#x2F;29&#x2F;Android-Testing-Strategy&#x2F;index.html">
+<meta property="og:site_name" content="Nayan Blog">
+<meta property="og:description" content="Testing android application is quite hard. There is no set guidelines for us to follow. When ever I started thinking of testing my application I always get confused where to start, should I write un">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;nayan.co&#x2F;blog&#x2F;2019&#x2F;11&#x2F;29&#x2F;Android-Testing-Strategy&#x2F;testing_strategy.jpeg">
+<meta property="og:updated_time" content="2019-12-03T06:28:17.969Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;nayan.co&#x2F;blog&#x2F;2019&#x2F;11&#x2F;29&#x2F;Android-Testing-Strategy&#x2F;testing_strategy.jpeg">
+    
+
+    
+
+    
+        <link rel="icon" href="/blog/css/images/favicon.png" />
+    
+
+    <link rel="stylesheet" href="/blog/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/blog/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/blog/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/blog/css/style.css">
+
+    <script src="/blog/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/blog/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/blog/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+<link rel="alternate" href="/blog/atom.xml" title="Nayan Blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/blog/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blog/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blog/categories/AI/">AI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blog/categories/Android/">Android</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blog/archives/index.html">Archive</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/blog/',
+        CONTENT_URL: '/blog/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/blog/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/blog/categories/Android/">Android</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Android-Testing-Strategy" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Android Testing Strategy
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/blog/2019/11/29/Android-Testing-Strategy/" class="article-date">
+         <time datetime="2019-11-29T17:07:05.000Z" itemprop="datePublished">2019-11-29</time>
+      </a>
+    </div>
+
+
+                
+  <div class="article-author">
+    Puneet Kashyap
+  </div>
+
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/blog/tags/Android-Testing/" rel="tag">Android Testing</a>, <a class="tag-link" href="/blog/tags/Instrumentation-Test/" rel="tag">Instrumentation Test</a>, <a class="tag-link" href="/blog/tags/Unit-Test/" rel="tag">Unit Test</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/blog/2019/11/29/Android-Testing-Strategy/testing_strategy.jpeg" class="" title="Testing Strategy">
+
+<p>Testing android application is quite hard. There is no set guidelines for us to follow. When ever I started thinking of testing my application I always get confused where to start, should I write unit tests or instrumentation tests and should I start with integration and End to end tests. There is also a lot of confusion on frameworks available for android testing.<br>This article has been written in a sense to address this confusion and show us as developers what kind of testing is most preferred and what frameworks are available.</p>
+<h2 id="Kinds-of-Tests"><a href="#Kinds-of-Tests" class="headerlink" title="Kinds of Tests"></a>Kinds of Tests</h2><h3 id="Unit-Test"><a href="#Unit-Test" class="headerlink" title="Unit Test"></a>Unit Test</h3><p>This is often referred to as local tests and  doesn’t require a device or emulator for running them. These can be classified broadly into categories</p>
+<ul>
+<li>Local/ Pure Unit tests - tests which can run on JVM, mainly written for testing business logic. On android JUnit, Mockito, the mockable Android JARs give us a nice combination of tools to run fast unit-style tests in the local JVM.</li>
+<li>Android  Unit Tests -  tests which  requires the Android system (ART) and for this we need to replace android dependencies using Roboelectric<br>Guidelines</li>
+<li>If you have dependencies on the Android framework, particularly those that create complex interactions with the framework, it’s better to include framework dependencies using Robolectric.</li>
+<li>If your tests have minimal dependencies on the Android framework, or if the tests depend only on your own objects, it’s fine to include mock dependencies using a mocking framework like Mockito and PowerMock.</li>
+</ul>
+<p>Reference Url : <a href="https://developer.android.com/training/testing/unit-testing/local-unit-tests" target="_blank" rel="noopener">https://developer.android.com/training/testing/unit-testing/local-unit-tests</a></p>
+<h3 id="Instrumentation-Tests"><a href="#Instrumentation-Tests" class="headerlink" title="Instrumentation Tests"></a>Instrumentation Tests</h3><p>These tests requires device or an emulator for running. This is mostly used for UI testing but it can be used to test none UI logic as well.</p>
+<ul>
+<li><p>This is useful when you need to test code that has a dependency on context. </p>
+</li>
+<li><p>UI tests can be an essential component of any testing strategy since they can uncover issues related to UI, hardware, firmware, and backwards compatibility</p>
+</li>
+</ul>
+<p>Reference Url: <a href="https://developer.android.com/training/testing/unit-testing/instrumented-unit-tests" target="_blank" rel="noopener">https://developer.android.com/training/testing/unit-testing/instrumented-unit-tests</a></p>
+<h2 id="Testing-Frameworks"><a href="#Testing-Frameworks" class="headerlink" title="Testing Frameworks"></a>Testing Frameworks</h2><h3 id="Android-X-Test-Framework"><a href="#Android-X-Test-Framework" class="headerlink" title="Android X Test Framework"></a>Android X Test Framework</h3><p> It is testing framework and APIs provided  by android team for writing unit tests.</p>
+<h3 id="Roboelectric"><a href="#Roboelectric" class="headerlink" title="Roboelectric"></a>Roboelectric</h3><p>It is a framework that brings fast and reliable unit tests to android. Runs inside JVM or your workstation in seconds. This is usually used to Integration testing. Integration tests validate how your code interacts with other parts of the system but without the added complexity of a UI framework.</p>
+<p>app/src/test/java - for any unit test which can run on the JVM</p>
+<p><strong>Question</strong> : How does it work?<br><strong>Answer</strong> : Unlike traditional emulators-based androids tests, it tests run inside a sandbox which allows the android environment to be precisely configured to the desired conditions for each test. It lets you run your tests on your workstation, or on your continuous integration environment in a regular JVM, without an emulator. It handles inflation of views, resource loading, and lots of other stuff that’s implemented in native C code on Android devices. This allows tests to do most things you could do on a real device. It’s easy to provide  our own implementation for specific SDK methods too, so you could simulate error conditions or real-world sensor behaviour. It allows a test style that is closer to black box testing, making the tests more effective for refactoring and allowing the tests to focus on the behaviour of the application instead of the implementation of Android</p>
+<p><strong>Question</strong> : Why should be prefer this?<br><strong>Answer</strong> : In order for this to run tests it needs regular JVM,  Because of this, the dexing, packaging, and installing-on-the emulator steps aren’t necessary, reducing test cycles from minutes to seconds so you can iterate quickly and refactor your code with confidence. Robolectric executes your code against real (not mock) Android JARs in the local JVM.</p>
+<h3 id="Espresso"><a href="#Espresso" class="headerlink" title="Espresso"></a>Espresso</h3><p> Use it to write concise, beautiful, and reliable Android UI tests. These tests are called Instrumentation tests and unlike unit tests takes more time to run them.</p>
+<p>app/src/androidTest/java - for any instrumentation test which should run on an Android</p>
+<p><strong>Question</strong> : How does it work?<br><strong>Answer</strong> : it requires an emulator or a real device to run tests. At the time of execution along with the main application, A testing application is also installed in the device which controls main application automatically.</p>
+<h3 id="UI-Automator"><a href="#UI-Automator" class="headerlink" title="UI Automator"></a>UI Automator</h3><p>It allows us to write cross application functional tests ( End to End) . Example, Sharing messages via Text intent or sending email via locally installed email clients.</p>
+<h3 id="Monkey-Runner-CL"><a href="#Monkey-Runner-CL" class="headerlink" title="Monkey Runner CL"></a>Monkey Runner CL</h3><p> Monkey is a command line tool which sends pseudo random events to your device. You can restrict Monkey to run only for a certain package and therefore instruct Monkey to test only your application. it can be used for Stress testing for android.</p>
+<p>Reference Url : <a href="https://developer.android.com/studio/test/monkey" target="_blank" rel="noopener">https://developer.android.com/studio/test/monkey</a>            </p>
+<h2 id="Recommandations"><a href="#Recommandations" class="headerlink" title="Recommandations"></a>Recommandations</h2><ul>
+<li><p>Creating test groups - @SmallTest. @MediumTest and @LargeTest annotation allows us to classify tests. Allows you to run, for example, only short running tests for development cycle. You may run your long running tests on a continuous integration server.<br>This can be easily configured this via InstrumentationTestRunner in user build.gradle    (app)</p>
+</li>
+<li><p>We can use a three tiered approach</p>
+<p><strong>Pure Unit tests :</strong>   These can be written for our business logic which are completely android independent of API and can run on JVM. These can be written using Junit Framework. Roboelectric Unit tests: where code has only small dependencies on android APIs and can be easily mocked with Roborelectric.</p>
+<p><strong>Android Instrumentation tests :</strong> where code heavily interact with device hardware, sensors and android APIs. These tests will usually take most time to run.</p>
+</li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://nayan.co/blog/2019/11/29/Android-Testing-Strategy/" data-id="ck3pheoho0000z1wf1yp7hsj1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "NayanTech"
+        },
+        "headline": "Android Testing Strategy",
+        "image": "https://nayan.co/blog/blog/2019/11/29/Android-Testing-Strategy/testing_strategy.jpeg",
+        "keywords": "Instrumentation Test Unit Test Android Testing",
+        "genre": "Android",
+        "datePublished": "2019-11-29",
+        "dateCreated": "2019-11-29",
+        "dateModified": "2019-12-03",
+        "url": "https://nayan.co/blog//2019/11/29/Android-Testing-Strategy/",
+        "description": "
+
+Testing android application is quite hard. There is no set guidelines for us to follow. When ever I started thinking of testing my application I always get confused where to start, should I write un",
+        "wordCount": 966
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="youtube" href="https://www.youtube.com/channel/UCgglHs52FLwmQNyxND57c2Q" target="_blank" rel="noopener">
+                        <i class="icon fa fa-youtube"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/nayancam" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/NAYANCAM/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/nayantechno/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin" href="https://in.linkedin.com/company/nayancam" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/blog/2019/12/02/Images/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Drawing Lines on Images
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/blog/2019/11/29/Tracking-Deep-Learning-Experiments-using-Keras-MlFlow-and-MongoDb/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Tracking Deep Learning experiments using Keras,MlFlow and MongoDB</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/12/02/Images/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blog/2019/12/02/Images/SC1.jpg)" alt="Drawing Lines on Images" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/Android/">Android</a></p>
+                            <p class="item-title"><a href="/blog/2019/12/02/Images/" class="title">Drawing Lines on Images</a></p>
+                            <p class="item-date"><time datetime="2019-12-02T19:27:37.000Z" itemprop="datePublished">2019-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/11/29/Android-Testing-Strategy/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blog/2019/11/29/Android-Testing-Strategy/testing_strategy.jpeg)" alt="Android Testing Strategy" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/Android/">Android</a></p>
+                            <p class="item-title"><a href="/blog/2019/11/29/Android-Testing-Strategy/" class="title">Android Testing Strategy</a></p>
+                            <p class="item-date"><time datetime="2019-11-29T17:07:05.000Z" itemprop="datePublished">2019-11-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/11/29/Tracking-Deep-Learning-Experiments-using-Keras-MlFlow-and-MongoDb/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blog/2019/11/29/Tracking-Deep-Learning-Experiments-using-Keras-MlFlow-and-MongoDb/banner.jpeg)" alt="Tracking Deep Learning experiments using Keras,MlFlow and MongoDB" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/AI/">AI</a></p>
+                            <p class="item-title"><a href="/blog/2019/11/29/Tracking-Deep-Learning-Experiments-using-Keras-MlFlow-and-MongoDb/" class="title">Tracking Deep Learning experiments using Keras,MlFlow and MongoDB</a></p>
+                            <p class="item-date"><time datetime="2019-11-29T12:06:56.000Z" itemprop="datePublished">2019-11-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/11/28/License-plate-recognition-using-Attention-based-OCR/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blog/2019/11/28/License-plate-recognition-using-Attention-based-OCR/p1.png)" alt="License plate recognition using Attention based OCR" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/AI/">AI</a></p>
+                            <p class="item-title"><a href="/blog/2019/11/28/License-plate-recognition-using-Attention-based-OCR/" class="title">License plate recognition using Attention based OCR</a></p>
+                            <p class="item-date"><time datetime="2019-11-28T12:06:56.000Z" itemprop="datePublished">2019-11-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/11/27/sharing-modules-across-android-apps/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blog/2019/11/27/sharing-modules-across-android-apps/modules.jpg)" alt="Sharing modules across Android apps" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/Android/">Android</a></p>
+                            <p class="item-title"><a href="/blog/2019/11/27/sharing-modules-across-android-apps/" class="title">Sharing modules across Android apps</a></p>
+                            <p class="item-date"><time datetime="2019-11-27T13:00:00.000Z" itemprop="datePublished">2019-11-27</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/AI/">AI</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Android/">Android</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/11/">November 2019</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/AOCR/" rel="tag">AOCR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Advance-Driver-Assistance/" rel="tag">Advance Driver Assistance</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Android-Testing/" rel="tag">Android Testing</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Autonomous-Driving/" rel="tag">Autonomous Driving</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Deep-Learning/" rel="tag">Deep Learning</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Instrumentation-Test/" rel="tag">Instrumentation Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Keras/" rel="tag">Keras</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Lane-Detection/" rel="tag">Lane Detection</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/License-Plates/" rel="tag">License Plates</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/License-Plates-Recognition/" rel="tag">License Plates Recognition</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Machine-Learning/" rel="tag">Machine Learning</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mlflow/" rel="tag">Mlflow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/MongoDB/" rel="tag">MongoDB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/OCR/" rel="tag">OCR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Tracking/" rel="tag">Tracking</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Unit-Test/" rel="tag">Unit Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/android/" rel="tag">android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/git-submodules/" rel="tag">git submodules</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/blog/tags/AOCR/" style="font-size: 10px;">AOCR</a> <a href="/blog/tags/Advance-Driver-Assistance/" style="font-size: 10px;">Advance Driver Assistance</a> <a href="/blog/tags/Android-Testing/" style="font-size: 10px;">Android Testing</a> <a href="/blog/tags/Autonomous-Driving/" style="font-size: 10px;">Autonomous Driving</a> <a href="/blog/tags/Deep-Learning/" style="font-size: 20px;">Deep Learning</a> <a href="/blog/tags/Instrumentation-Test/" style="font-size: 10px;">Instrumentation Test</a> <a href="/blog/tags/Keras/" style="font-size: 10px;">Keras</a> <a href="/blog/tags/Lane-Detection/" style="font-size: 10px;">Lane Detection</a> <a href="/blog/tags/License-Plates/" style="font-size: 10px;">License Plates</a> <a href="/blog/tags/License-Plates-Recognition/" style="font-size: 10px;">License Plates Recognition</a> <a href="/blog/tags/Machine-Learning/" style="font-size: 15px;">Machine Learning</a> <a href="/blog/tags/Mlflow/" style="font-size: 10px;">Mlflow</a> <a href="/blog/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/blog/tags/OCR/" style="font-size: 10px;">OCR</a> <a href="/blog/tags/Tracking/" style="font-size: 10px;">Tracking</a> <a href="/blog/tags/Unit-Test/" style="font-size: 10px;">Unit Test</a> <a href="/blog/tags/android/" style="font-size: 10px;">android</a> <a href="/blog/tags/git-submodules/" style="font-size: 10px;">git submodules</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://nayan.co">Nayan</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <section class="footer">
+  <div class="container">
+    <div class="container-inner">
+        <div class="flexContainer">
+      <div class="col-lg-3">
+
+        <h3>NAYAN (Partner's offices)</h3>
+        <p>Gulf Business Machines (UCMC LLC.) <br>
+          Emarat Atrium Building, Wing B, 3rd Floor<br>
+          Opposite Holiday Inn (Al Safa)<br>
+          Sheikh Zayed Road, PO Box 9226, Dubai, UAE
+        </p>
+
+
+      </div>
+      <div class="col-lg-6">
+        <div class="footer-links">
+          <img src="https://nayan.co/blog/css/images/nayan-logo.png" alt="">
+          <p><span>Our Goal: </span> Stewarding and Monitoring all roadways, on demand<p>
+
+          <ul>
+          <li><a href="https://www.facebook.com/NAYANCAM/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="https://twitter.com/nayancam" target="_blank"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.youtube.com/channel/UCgglHs52FLwmQNyxND57c2Q" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
+          <li><a href="https://www.instagram.com/nayantechno/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <ul class="footer-menu">
+          <li><a href="https://nayan.co/blog/">Home</a></li>
+          <li><a href="/blog/archives/index.html">Archive</a></li>
+          <li><a href="https://nayan.co" target="_blank">Nayan</a></li>
+        </ul>
+
+      </div>
+    </div>
+    </div>
+  </div>
+
+</section>
+<section class="credits">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+
+        <p>&copy; 2019 NAYAN <span> All Rights Reserved</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+        
+
+
+    
+        <script src="/blog/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/blog/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/blog/js/main.js"></script>
+
+    </div>
+</body>
+</html>

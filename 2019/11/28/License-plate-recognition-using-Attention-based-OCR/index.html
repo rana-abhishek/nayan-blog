@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>License plate recognition using Attention based OCR | Nayan Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Deep Learning,Machine Learning,OCR,AOCR,License Plates,License Plates Recognition" />
+    
+    <meta name="description" content="IntroductionIf you clicked on this post title then it is certain that you are working on some kind of License plate recognition task and working on a specific kind of License Plate, if that’s the case">
+<meta name="keywords" content="Deep Learning,Machine Learning,OCR,AOCR,License Plates,License Plates Recognition">
+<meta property="og:type" content="article">
+<meta property="og:title" content="License plate recognition using Attention based OCR">
+<meta property="og:url" content="https:&#x2F;&#x2F;nayan.co&#x2F;blog&#x2F;2019&#x2F;11&#x2F;28&#x2F;License-plate-recognition-using-Attention-based-OCR&#x2F;index.html">
+<meta property="og:site_name" content="Nayan Blog">
+<meta property="og:description" content="IntroductionIf you clicked on this post title then it is certain that you are working on some kind of License plate recognition task and working on a specific kind of License Plate, if that’s the case">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;nayan.co&#x2F;blog&#x2F;2019&#x2F;11&#x2F;28&#x2F;License-plate-recognition-using-Attention-based-OCR&#x2F;p1.png">
+<meta property="og:updated_time" content="2019-12-03T06:28:17.977Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;nayan.co&#x2F;blog&#x2F;2019&#x2F;11&#x2F;28&#x2F;License-plate-recognition-using-Attention-based-OCR&#x2F;p1.png">
+    
+
+    
+
+    
+        <link rel="icon" href="/blog/css/images/favicon.png" />
+    
+
+    <link rel="stylesheet" href="/blog/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/blog/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/blog/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/blog/css/style.css">
+
+    <script src="/blog/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/blog/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/blog/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+<link rel="alternate" href="/blog/atom.xml" title="Nayan Blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/blog/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blog/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blog/categories/AI/">AI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blog/categories/Android/">Android</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blog/archives/index.html">Archive</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/blog/',
+        CONTENT_URL: '/blog/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/blog/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/blog/categories/AI/">AI</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-License-plate-recognition-using-Attention-based-OCR" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        License plate recognition using Attention based OCR
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/blog/2019/11/28/License-plate-recognition-using-Attention-based-OCR/" class="article-date">
+         <time datetime="2019-11-28T12:06:56.000Z" itemprop="datePublished">2019-11-28</time>
+      </a>
+    </div>
+
+
+                
+  <div class="article-author">
+    Piyush Jain
+  </div>
+
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/blog/tags/AOCR/" rel="tag">AOCR</a>, <a class="tag-link" href="/blog/tags/Deep-Learning/" rel="tag">Deep Learning</a>, <a class="tag-link" href="/blog/tags/License-Plates/" rel="tag">License Plates</a>, <a class="tag-link" href="/blog/tags/License-Plates-Recognition/" rel="tag">License Plates Recognition</a>, <a class="tag-link" href="/blog/tags/Machine-Learning/" rel="tag">Machine Learning</a>, <a class="tag-link" href="/blog/tags/OCR/" rel="tag">OCR</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>If you clicked on this post title then it is certain that you are working on some kind of License plate recognition task and working on a specific kind of License Plate, if that’s the case you have landed in right post. In this post i will explain how to train Attention based OCR (AOCR) model for a specific License Plate.</p>
+<p>I will first share some brief information of AOCR model followed by steps which will help you train the model and after that we will use the trained model to test its performance.</p>
+<h2 id="Attention-OCR-Model-architecture"><a href="#Attention-OCR-Model-architecture" class="headerlink" title="Attention OCR Model architecture"></a>Attention OCR Model architecture</h2><p>First of all the source code of this model is available on this <a href="https://github.com/tensorflow/models/tree/master/research/attention_ocr" target="_blank" rel="noopener">Tensorflow</a> Github repository. I will suggest you to try <a href="https://github.com/emedvedev/attention-ocr" target="_blank" rel="noopener">this</a> repository if you want/can modify code.</p>
+<img src="/blog/2019/11/28/License-plate-recognition-using-Attention-based-OCR/p1.png" class=""> <center>Figure 1.  AOCR model architecture</center>
+
+<p>Source: <a href="https://arxiv.org/pdf/1609.04938v2.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1609.04938v2.pdf</a></p>
+<p>Now the model structure, it has 7 Convolutional layer and 3 bi-directional Long short-term memory (LSTM) layers followed by a Seq2Seq model which translates image features to characters(act as a decoder). Convolutional layers can be seen in the below image.</p>
+<img src="/blog/2019/11/28/License-plate-recognition-using-Attention-based-OCR/p2.png" class=""> <center>Figure 2. CNN architecture </center>
+
+<br>
+
+<h2 id="How-to-train-this-model"><a href="#How-to-train-this-model" class="headerlink" title="How to train this model?"></a>How to train this model?</h2><p>First of all use this pip command to install aocr on your system.</p>
+<pre><code>pip install aocr</code></pre><p>Now you need dataset of License Plates images with its annotation. Annotation file should have file path and its label in a text file.</p>
+<pre><code>datasets/image1.jpg label1
+datasets/image2.jpg label2</code></pre><p>After the dataset is ready along with annotation file you have to run this command to create tfrecords file for training of AOCR model. Separate some images for testing and create separate tfrecords file using test annotation file which contains paths of test images and corresponding labels.</p>
+<pre><code>aocr dataset /path/to/training_annotation.txt path/to/training.tfrecords
+
+aocr dataset /path/to/testing_annotation.txt path/to/testing.tfrecords</code></pre><p>The above command need annotation file path as input and creates tfrecords file on the given path i.e. last argument of above command. Now just run the below command to start training procedure.</p>
+<p>By default maximum width is set to 160 and maximum height is set to 60. If your images has width or height more than the default maximum then model will not use those images for training. Either you resize all your images or you can set maximum width and height just make sure all the images are below those values.</p>
+<p>Default checkpoint directory is ‘./checkpoints’ and it will create this where you will execute below command(You can set this too). Just make sure when you test you are giving correct checkpoint path, width and height.</p>
+<p>Maximum prediction length is 8 by default and again you can change it according to your License plates. Default epoch is 1000 change it according to quantity of your dataset if it is small run it for default value otherwise you can set it to 500.</p>
+<pre><code>aocr train /path/to/training.tfrecords --max-width 200 --max-height 100 --model-dir /path/to/checkpoint --max-prediction 6 --num-epoch 500</code></pre><h2 id="Test-the-model"><a href="#Test-the-model" class="headerlink" title="Test the model"></a>Test the model</h2><p>Once the training procedure is finished use this command to test the model. Just make sure checkpoint directory is created when the training starts.</p>
+<pre><code>aocr test /path/to/testing.tfrecords --visualize --max-width 200 --max-height 100 --model-dir /path/to/checkpoint --max-prediction 6 --output-dir ./results</code></pre><p>Now you can see all the prediction inside result folder. For each file there will be one folder which will contain the GIF which will have attention mapped on the images and a text file which will have prediction in the first line and label in the second line. Prediction is placed on the folder name too by default.</p>
+<img src="/blog/2019/11/28/License-plate-recognition-using-Attention-based-OCR/p3.png" class=""> <center>Figure 3.  Result folder directory</center>
+<br>
+<img src="/blog/2019/11/28/License-plate-recognition-using-Attention-based-OCR/p4.png" class=""> <center>Figure 4.  Text file which contains prediction and label</center>
+<br>
+<img src="/blog/2019/11/28/License-plate-recognition-using-Attention-based-OCR/p5.gif" class=""> <center>Gif 1.  GIF with attention map</center>
+<br>
+
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>If you have successfully trained and test the model then you can skip this part. If you have all the training images in one folder and their labels are in the filename itself then you can run this simple script to train your model.</p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h3><p>In case of same label for different images filename will be label_1.extension, label_2.extension etc.</p>
+<p>Execute this script using this command “python3 Train_AOCR.py -d /home/some/path/”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">import cv2</span><br><span class="line">import os</span><br><span class="line">import shutil</span><br><span class="line">import sys</span><br><span class="line">from pathlib import Path</span><br><span class="line">import optparse</span><br><span class="line"></span><br><span class="line">#python3 Train_AOCR.py -d /DIR_PATH/</span><br><span class="line"></span><br><span class="line"># Give checkpoint path, steps per checkpoints and number of epoch in line 61</span><br><span class="line"></span><br><span class="line">#give images max width and height here</span><br><span class="line">dim = (210, 70)</span><br><span class="line"></span><br><span class="line">parser = optparse.OptionParser()</span><br><span class="line">parser.add_option(&apos;-d&apos;, &apos;--dir_path&apos;,</span><br><span class="line">    action=&quot;store&quot;, dest=&quot;dirpath&quot;,</span><br><span class="line">    help=&quot;Enter test image directory&quot;, default=&quot;Empty&quot;)</span><br><span class="line"></span><br><span class="line">parser.add_option(&apos;-i&apos;, &apos;--image&apos;,</span><br><span class="line">    action=&quot;store&quot;, dest=&quot;image&quot;,</span><br><span class="line">    help=&quot;Input image&quot;, default=&quot;Empty&quot;)</span><br><span class="line"></span><br><span class="line">options, args = parser.parse_args()</span><br><span class="line"></span><br><span class="line">if os.path.exists(&quot;/home/username/path/annotations-training.txt&quot;):</span><br><span class="line">  os.remove(&quot;/home/username/path/annotations-training.txt&quot;)</span><br><span class="line"></span><br><span class="line">if os.path.exists(&quot;/home/username/path/train.tfrecords&quot;):</span><br><span class="line">  os.remove(&quot;/home/username/path/train.tfrecords&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">f_veh = open(&apos;/home/username/path/annotations-training.txt&apos;, &apos;w+&apos;)</span><br><span class="line"></span><br><span class="line">if options.dirpath != &apos;Empty&apos;:</span><br><span class="line">	for filename in os.listdir(options.dirpath):</span><br><span class="line">	</span><br><span class="line">		name, ext = os.path.splitext(filename)</span><br><span class="line">		name = name.split(&apos;_&apos;)</span><br><span class="line">		img = cv2.imread(options.dirpath+filename)</span><br><span class="line">		img = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)	</span><br><span class="line">		cv2.imwrite(options.dirpath+filename,img)</span><br><span class="line">		#os.rename(options.dirpath+filename,options.dirpath+temp[0]+ext)</span><br><span class="line">		if ext in [&apos;.png&apos;, &apos;.jpg&apos;,&apos;.jpeg&apos;]:</span><br><span class="line">			f_veh.write(options.dirpath+filename+ &apos; &apos;+name[0]+ &apos;\n&apos;)			</span><br><span class="line">				</span><br><span class="line">comm = &apos;aocr dataset /home/username/path/annotations-training.txt /home/username/path/train.tfrecords&apos;</span><br><span class="line">comm1 = &apos;aocr train /home/username/path/train.tfrecords --model-dir /home/username/path/checkpoints --max-height 70 --max-width 210 --max-prediction 6 --num-epoch 1000&apos; </span><br><span class="line">os.system(comm)</span><br><span class="line">os.system(comm1)</span><br></pre></td></tr></table></figure>
+
+<p>Now you can test the model on a test set using the above code only same format goes as for the training set and its label.</p>
+<p>You just need to run below code using this command “python3 Run_AOCR.py -d /home/some/test_set_path/”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">import cv2</span><br><span class="line">import os</span><br><span class="line">import shutil</span><br><span class="line">import sys</span><br><span class="line">from pathlib import Path</span><br><span class="line">import optparse</span><br><span class="line"></span><br><span class="line">#python3 Run_AOCR.py -d /DIR_PATH/</span><br><span class="line"></span><br><span class="line"># Give checkpoint path, steps per checkpoints and number of epoch in line 61</span><br><span class="line"></span><br><span class="line">#give images max width and height here</span><br><span class="line">dim = (210, 70)</span><br><span class="line"></span><br><span class="line">parser = optparse.OptionParser()</span><br><span class="line">parser.add_option(&apos;-d&apos;, &apos;--dir_path&apos;,</span><br><span class="line">    action=&quot;store&quot;, dest=&quot;dirpath&quot;,</span><br><span class="line">    help=&quot;Enter test image directory&quot;, default=&quot;Empty&quot;)</span><br><span class="line"></span><br><span class="line">parser.add_option(&apos;-i&apos;, &apos;--image&apos;,</span><br><span class="line">    action=&quot;store&quot;, dest=&quot;image&quot;,</span><br><span class="line">    help=&quot;Input image&quot;, default=&quot;Empty&quot;)</span><br><span class="line"></span><br><span class="line">options, args = parser.parse_args()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p = Path(&quot;/home/username/path/results&quot;)</span><br><span class="line">if p.is_dir():</span><br><span class="line">	shutil.rmtree(&apos;/home/username/path/results&apos;)	</span><br><span class="line"></span><br><span class="line">if os.path.exists(&quot;/home/username/path/annotations-testing.txt&quot;):</span><br><span class="line">  os.remove(&quot;/home/username/path/annotations-testing.txt&quot;)</span><br><span class="line"></span><br><span class="line">if os.path.exists(&quot;/home/username/path/test.tfrecords&quot;):</span><br><span class="line">  os.remove(&quot;/home/username/path/test.tfrecords&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">f_veh = open(&apos;/home/username/path/annotations-testing.txt&apos;, &apos;w+&apos;)</span><br><span class="line"></span><br><span class="line">if options.dirpath != &apos;Empty&apos;:</span><br><span class="line">	for filename in os.listdir(options.dirpath):</span><br><span class="line">	</span><br><span class="line">		name, ext = os.path.splitext(filename)</span><br><span class="line">		name = name.split(&apos;_&apos;)</span><br><span class="line">		img = cv2.imread(options.dirpath+filename)</span><br><span class="line">		img = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)	</span><br><span class="line">		cv2.imwrite(options.dirpath+filename,img)</span><br><span class="line">		#os.rename(options.dirpath+filename,options.dirpath+temp[0]+ext)</span><br><span class="line">		if ext in [&apos;.png&apos;, &apos;.jpg&apos;,&apos;.jpeg&apos;]:</span><br><span class="line">			f_veh.write(options.dirpath+filename+ &apos; &apos;+name[0]+ &apos;\n&apos;)			</span><br><span class="line">				</span><br><span class="line">comm = &apos;aocr dataset /home/username/path/annotations-testing.txt /home/username/path/test.tfrecords&apos;</span><br><span class="line">comm1 = &apos;aocr test --visualize /home/username/path/test.tfrecords --model-dir /home/username/path/checkpoints --max-height 70 --max-width 210 --max-prediction 6 --output-dir ./results&apos; </span><br><span class="line">os.system(comm)</span><br><span class="line">os.system(comm1)</span><br></pre></td></tr></table></figure>
+
+<p>After running this script you can find all the prediction in the output directory.</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://nayan.co/blog/2019/11/28/License-plate-recognition-using-Attention-based-OCR/" data-id="ck3pheojh000oz1wf0bry0727" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "NayanTech"
+        },
+        "headline": "License plate recognition using Attention based OCR",
+        "image": "https://nayan.co/blog/blog/2019/11/28/License-plate-recognition-using-Attention-based-OCR/p1.png",
+        "keywords": "Deep Learning Machine Learning OCR AOCR License Plates License Plates Recognition",
+        "genre": "AI",
+        "datePublished": "2019-11-28",
+        "dateCreated": "2019-11-28",
+        "dateModified": "2019-12-03",
+        "url": "https://nayan.co/blog//2019/11/28/License-plate-recognition-using-Attention-based-OCR/",
+        "description": "IntroductionIf you clicked on this post title then it is certain that you are working on some kind of License plate recognition task and working on a specific kind of License Plate, if that’s the case",
+        "wordCount": 1203
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="youtube" href="https://www.youtube.com/channel/UCgglHs52FLwmQNyxND57c2Q" target="_blank" rel="noopener">
+                        <i class="icon fa fa-youtube"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/nayancam" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/NAYANCAM/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/nayantechno/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin" href="https://in.linkedin.com/company/nayancam" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/blog/2019/11/29/Tracking-Deep-Learning-Experiments-using-Keras-MlFlow-and-MongoDb/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Tracking Deep Learning experiments using Keras,MlFlow and MongoDB
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/blog/2019/11/27/sharing-modules-across-android-apps/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Sharing modules across Android apps</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/12/02/Images/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blog/2019/12/02/Images/SC1.jpg)" alt="Drawing Lines on Images" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/Android/">Android</a></p>
+                            <p class="item-title"><a href="/blog/2019/12/02/Images/" class="title">Drawing Lines on Images</a></p>
+                            <p class="item-date"><time datetime="2019-12-02T19:27:37.000Z" itemprop="datePublished">2019-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/11/29/Android-Testing-Strategy/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blog/2019/11/29/Android-Testing-Strategy/testing_strategy.jpeg)" alt="Android Testing Strategy" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/Android/">Android</a></p>
+                            <p class="item-title"><a href="/blog/2019/11/29/Android-Testing-Strategy/" class="title">Android Testing Strategy</a></p>
+                            <p class="item-date"><time datetime="2019-11-29T17:07:05.000Z" itemprop="datePublished">2019-11-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/11/29/Tracking-Deep-Learning-Experiments-using-Keras-MlFlow-and-MongoDb/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blog/2019/11/29/Tracking-Deep-Learning-Experiments-using-Keras-MlFlow-and-MongoDb/banner.jpeg)" alt="Tracking Deep Learning experiments using Keras,MlFlow and MongoDB" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/AI/">AI</a></p>
+                            <p class="item-title"><a href="/blog/2019/11/29/Tracking-Deep-Learning-Experiments-using-Keras-MlFlow-and-MongoDb/" class="title">Tracking Deep Learning experiments using Keras,MlFlow and MongoDB</a></p>
+                            <p class="item-date"><time datetime="2019-11-29T12:06:56.000Z" itemprop="datePublished">2019-11-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/11/28/License-plate-recognition-using-Attention-based-OCR/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blog/2019/11/28/License-plate-recognition-using-Attention-based-OCR/p1.png)" alt="License plate recognition using Attention based OCR" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/AI/">AI</a></p>
+                            <p class="item-title"><a href="/blog/2019/11/28/License-plate-recognition-using-Attention-based-OCR/" class="title">License plate recognition using Attention based OCR</a></p>
+                            <p class="item-date"><time datetime="2019-11-28T12:06:56.000Z" itemprop="datePublished">2019-11-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/11/27/sharing-modules-across-android-apps/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blog/2019/11/27/sharing-modules-across-android-apps/modules.jpg)" alt="Sharing modules across Android apps" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/Android/">Android</a></p>
+                            <p class="item-title"><a href="/blog/2019/11/27/sharing-modules-across-android-apps/" class="title">Sharing modules across Android apps</a></p>
+                            <p class="item-date"><time datetime="2019-11-27T13:00:00.000Z" itemprop="datePublished">2019-11-27</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/AI/">AI</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Android/">Android</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/11/">November 2019</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/AOCR/" rel="tag">AOCR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Advance-Driver-Assistance/" rel="tag">Advance Driver Assistance</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Android-Testing/" rel="tag">Android Testing</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Autonomous-Driving/" rel="tag">Autonomous Driving</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Deep-Learning/" rel="tag">Deep Learning</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Instrumentation-Test/" rel="tag">Instrumentation Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Keras/" rel="tag">Keras</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Lane-Detection/" rel="tag">Lane Detection</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/License-Plates/" rel="tag">License Plates</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/License-Plates-Recognition/" rel="tag">License Plates Recognition</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Machine-Learning/" rel="tag">Machine Learning</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mlflow/" rel="tag">Mlflow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/MongoDB/" rel="tag">MongoDB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/OCR/" rel="tag">OCR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Tracking/" rel="tag">Tracking</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Unit-Test/" rel="tag">Unit Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/android/" rel="tag">android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/git-submodules/" rel="tag">git submodules</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/blog/tags/AOCR/" style="font-size: 10px;">AOCR</a> <a href="/blog/tags/Advance-Driver-Assistance/" style="font-size: 10px;">Advance Driver Assistance</a> <a href="/blog/tags/Android-Testing/" style="font-size: 10px;">Android Testing</a> <a href="/blog/tags/Autonomous-Driving/" style="font-size: 10px;">Autonomous Driving</a> <a href="/blog/tags/Deep-Learning/" style="font-size: 20px;">Deep Learning</a> <a href="/blog/tags/Instrumentation-Test/" style="font-size: 10px;">Instrumentation Test</a> <a href="/blog/tags/Keras/" style="font-size: 10px;">Keras</a> <a href="/blog/tags/Lane-Detection/" style="font-size: 10px;">Lane Detection</a> <a href="/blog/tags/License-Plates/" style="font-size: 10px;">License Plates</a> <a href="/blog/tags/License-Plates-Recognition/" style="font-size: 10px;">License Plates Recognition</a> <a href="/blog/tags/Machine-Learning/" style="font-size: 15px;">Machine Learning</a> <a href="/blog/tags/Mlflow/" style="font-size: 10px;">Mlflow</a> <a href="/blog/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/blog/tags/OCR/" style="font-size: 10px;">OCR</a> <a href="/blog/tags/Tracking/" style="font-size: 10px;">Tracking</a> <a href="/blog/tags/Unit-Test/" style="font-size: 10px;">Unit Test</a> <a href="/blog/tags/android/" style="font-size: 10px;">android</a> <a href="/blog/tags/git-submodules/" style="font-size: 10px;">git submodules</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://nayan.co">Nayan</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <section class="footer">
+  <div class="container">
+    <div class="container-inner">
+        <div class="flexContainer">
+      <div class="col-lg-3">
+
+        <h3>NAYAN (Partner's offices)</h3>
+        <p>Gulf Business Machines (UCMC LLC.) <br>
+          Emarat Atrium Building, Wing B, 3rd Floor<br>
+          Opposite Holiday Inn (Al Safa)<br>
+          Sheikh Zayed Road, PO Box 9226, Dubai, UAE
+        </p>
+
+
+      </div>
+      <div class="col-lg-6">
+        <div class="footer-links">
+          <img src="https://nayan.co/blog/css/images/nayan-logo.png" alt="">
+          <p><span>Our Goal: </span> Stewarding and Monitoring all roadways, on demand<p>
+
+          <ul>
+          <li><a href="https://www.facebook.com/NAYANCAM/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="https://twitter.com/nayancam" target="_blank"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.youtube.com/channel/UCgglHs52FLwmQNyxND57c2Q" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
+          <li><a href="https://www.instagram.com/nayantechno/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <ul class="footer-menu">
+          <li><a href="https://nayan.co/blog/">Home</a></li>
+          <li><a href="/blog/archives/index.html">Archive</a></li>
+          <li><a href="https://nayan.co" target="_blank">Nayan</a></li>
+        </ul>
+
+      </div>
+    </div>
+    </div>
+  </div>
+
+</section>
+<section class="credits">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+
+        <p>&copy; 2019 NAYAN <span> All Rights Reserved</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+        
+
+
+    
+        <script src="/blog/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/blog/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/blog/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/blog/js/main.js"></script>
+
+    </div>
+</body>
+</html>
