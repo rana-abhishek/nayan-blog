@@ -11,7 +11,7 @@ tags:
 
 <br>
 
-![](BG.png)
+{% asset_img BG.png l %}
 
 Chart.js is a popular JavaScript charting library and ng2-charts is a wrapper for Angular 2+ that makes it easy to integrate Chart.js in Angular. Let’s go over the basic usage.
 
