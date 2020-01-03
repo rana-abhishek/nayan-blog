@@ -2,8 +2,9 @@
 title: Paytm Gateway Integration
 date: 2020-01-02 14:43:06
 author: Ashish Jajoria
-category:
-- Android
+categories:
+- ["Android"]
+- ["Ruby on Rails"]
 tags: 
 - paytm
 - gateway
