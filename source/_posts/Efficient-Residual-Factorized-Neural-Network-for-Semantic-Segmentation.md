@@ -2,6 +2,7 @@
 title: Efficient-Residual-Factorized-Neural-Network-for-Semantic-Segmentation
 date: 2020-01-09 08:37:31
 author: Anand Kummari
+category: AI
 tags: 
 - Machine Learning
 - Deep Learning
