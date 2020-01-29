@@ -4,7 +4,10 @@ date: 2019-11-26 15:21:29
 author: Akshay Bajpai
 category: AI
 tags: 
+<<<<<<< HEAD
 - Deep Learning
+=======
+>>>>>>> dev
 ---
 
 # Text detection in number plates
