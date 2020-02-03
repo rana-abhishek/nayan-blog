@@ -2,6 +2,7 @@
 title: App-Heartbeat
 date: 2020-02-03 13:40:48
 author: Diwakar Singh
+category: Android
 tags:
 - android
 - user interaction
@@ -10,7 +11,7 @@ tags:
 
 This is an era of mobile technology where everyone is a smartphone user. To be able to use a smartphone we need to ‘Interact’ with it. A simple touch with a finger to open an app is an example of this ‘interact’ and this phenomenon is called ‘User Interaction’. If a user does not interact for a while, then heartbeat of application will stop.
 
-{% asset_img heartbeat.jpg Image_1 %}
+{% asset_img heartbeat.jpeg Image_1 %}
 
 ## Let’s get started
 
@@ -140,6 +141,6 @@ fun heartBeat() {
 }
 ```
 
-For more sample code , see the [Draw-Line](https://github.com/diwakarsinghdiwakar/App-Heartbeat "App-Heartbeat")
+For more sample code , see the [App-Heartbeat](https://github.com/diwakarsinghdiwakar/App-Heartbeat "App-Heartbeat")
 
 ## And we’re done!
