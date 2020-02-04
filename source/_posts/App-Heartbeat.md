@@ -9,7 +9,8 @@ tags:
 - sessions
 ---
 
-This is an era of mobile technology where everyone is a smartphone user. To be able to use a smartphone we need to ‘Interact’ with it. A simple touch with a finger to open an app is an example of this ‘interact’ and this phenomenon is called ‘User Interaction’. If a user does not interact for a while, then heartbeat of application will stop.
+This is an era of mobile technology where everyone is a smartphone user. To be able to use a smartphone we need to ‘Interact’ with it. A simple touch with a finger to open an app is an example of this ‘interact’ and this phenomenon is called ‘User Interaction’.
+Heart of application will continue beat,as long as user interact. Heartbeat is used to calculate sessions,for how much time a user is interacted with application. When a user is started using app, we create a session. A session has two values, start time and end time. For a new session both start and end time will same (current time of system). Every one minute, we check that, is user interacted or not. If user is interacted then we update that session by changing its end time (now end time for that session will be current time of system). If user is not interacted then we create a new session. Reason behind to create a heartbeat of application , we will have at least 60 seconds lost.
 
 {% asset_img heartbeat.jpeg Image_1 %}
 
@@ -25,7 +26,7 @@ implementation "com.jakewharton.timber:timber:4.7.1"
 implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
 ```
 
-### Step -2: Create a layout for interaction
+### Step -2: Create a layout for user interaction
 
 In layout, we are adding a button which will change background colour.
 
@@ -57,9 +58,9 @@ In layout, we are adding a button which will change background colour.
 </RelativeLayout>
 ```
 
-### Step-3: Create a model class for sessions
+### Step-3: Create a model class for session
 
-In that data class, we will perform some sessions related tasks (check session is active or not, update session etc.)
+In that data class, we handle some sessions related tasks (check session is active or not, update session etc.)
 
 ```
 data class Session(
@@ -98,9 +99,9 @@ data class Session(
 }
 ```
 
-### Step-4: Create session manager
+### Step-4: Create a session manager
 
-Now we create a session manager, which will manage all sessions activities like — add session, update session. When we open application in onResume() of activity we start a handler and onPause(), stop handler.
+Now we create a session manager, which will manage all sessions activities like — add session, update session. When we open application in onResume() of activity we will start a handler and onPause(),will stop handler.
 
 ```
 init {
