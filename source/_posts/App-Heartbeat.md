@@ -27,7 +27,7 @@ data class Session(
     )
 ```
 
-In that we perform some operations -
+We perform some operations in session -
 #### - Is session active :
 
 In that we check current session is active or not. If difference between System current time and end time of that session is less than a heartbeat( heartbeat duration + heartbeat buffer). In our case heartbeat duration is 60 seconds and heartbeat buffer is 2 seconds.
