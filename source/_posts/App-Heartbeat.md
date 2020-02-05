@@ -10,7 +10,7 @@ tags:
 ---
 
 This is an era of mobile technology where everyone is a smartphone user. To be able to use a smartphone we need to ‘Interact’ with it. A simple touch with a finger to open an app is an example of this ‘interact’ and this phenomenon is called ‘User Interaction’.
-Heart of application will continue beat, as long as user interact. Heartbeat is used to calculate sessions,for how much time a user is interacted with application. When a user is started using app, we create a session. A session has two values, start time and end time. For a new session both start and end time will same (current time of system). Every one minute, we check that, is user interacted or not. If user is interacted then we update that session by changing its end time (now end time for that session will be current time of system). If user is not interacted then we create a new session. Reason behind to create a heartbeat of application , we will have at least 60 seconds lost.
+Heart of application will continue beat, as long as user interact. Heartbeat is used to calculate sessions, for how much time a user is interacted with application. When a user is started using app, we create a session. A session has two values, start time and end time. For a new session both start and end time will same (current time of system). Every one minute, we check, is user interacted or not. If user is interacted then we update that session by changing its end time (now end time for that session will be current time of system). If user is not interacted then we create a new session. Reason behind to create a heartbeat of application , we will have at least 60 seconds lost.
 
 {% asset_img heartbeat.jpeg Image_1 %}
 
@@ -28,7 +28,7 @@ data class Session(
 ```
 
 In that we perform some operations -
-#### Is session active :
+#### - Is session active :
 
 In that we check current session is active or not. If difference between System current time and end time of that session is less than a heartbeat( heartbeat duration + heartbeat buffer). In our case heartbeat duration is 60 seconds and heartbeat buffer is 2 seconds.
 
@@ -38,7 +38,7 @@ fun isActive(): Boolean {
     }
 ```
 
-#### Update current session:
+#### - Update current session:
 
 If session is active then we update current session. For updating current session we will put system current time in end time of that session.
 
@@ -92,6 +92,6 @@ fun heartBeat() {
 }
 ```
 
-For more sample code , see the [App-Heartbeat](https://github.com/diwakarsinghdiwakar/App-Heartbeat "App-Heartbeat")
+For more sample code , see the [`App-Heartbeat`](https://github.com/diwakarsinghdiwakar/App-Heartbeat "App-Heartbeat")
 
 ## And we’re done!
