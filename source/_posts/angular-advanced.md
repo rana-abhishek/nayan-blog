@@ -2,7 +2,7 @@
 title: Angular Charts Features
 date: 2020-02-11 11:33:31
 author: Abhishek Rana
-tags: Web
+category: Web
 tags:
 - Charts
 - Plugins
@@ -19,8 +19,9 @@ Chart.js animates charts out of the box. A number of options are provided to con
 
 The following animation options are available. The global options for are defined in Chart.defaults.global.animation.
 
-  1. `duration`: Number of milliseconds an animation takes to complete
-  2. `easing`: 
+  1. **Duration**: Number of milliseconds an animation takes to complete
+
+  2. **Easing**: 
     * `linear`
     * `easeInQuad`
     * `easeOutQuad`
@@ -33,9 +34,11 @@ The following animation options are available. The global options for are define
     * `easeInOutQuart`
     * `easeInQuint`
     * `easeOutQ`
-  3. Animation Callbacks
+
+  3. **Animation Callbacks**
 
   The onProgress and onComplete callbacks are useful for synchronizing an external draw to the chart animation. The callback is passed a Chart.Animation instance:
+
 
   ```
   {
@@ -62,7 +65,6 @@ The following animation options are available. The global options for are define
   }
   ```
 
-
 ### Example of preogress bar animation
 
 ```
@@ -79,24 +81,28 @@ var chart = new Chart(ctx, {
 });
 ```
 
+
 ## Legend Configuration
 
 The chart legend displays data about the datasets that are appearing on the chart.
 
-  1. Position
+  1. **Position**
     Position of the legend. Options are:
     * `top`
     * `left`
     * `bottom`
     * `right`
 
-  2. Align
+  2. **Align**
     Alignment of the legend. Options are:
     * `start`
     * `center`
     * `end`
-  3. Legend Item Interface
+
+  3. **Legend Item Interface**
+
   Items passed to the legend onClick function are the ones returned from labels.generateLabels. These items must implement the following interface.
+
   ```
   {
     // Label that will be displayed
@@ -133,8 +139,12 @@ The chart legend displays data about the datasets that are appearing on the char
     rotation: number
   }
   ```
+
 ### Example
+
 The following example will create a chart with the legend enabled and turn all of the text red in color.
+
+
 ```
 var chart = new Chart(ctx, {
     type: 'bar',
@@ -148,27 +158,32 @@ var chart = new Chart(ctx, {
         }
     }
 });
-``` 
+
+```
+
 
 ## Tooltip
 
 ### Tooltip Configuration
-
-  1. Position Modes
+  1. **Position Modes**
   Possible modes are:
+
    * `average`
    * `nearest`
 
-  2. Alignment
+  2. **Alignment**
   The titleAlign, bodyAlign and footerAlign options define the horizontal position of the text lines with respect to the tooltip box. The following values are supported.
+
     * `left`
     * `right`
     * `center`
 
 ### Tooltip Callbacks
 
-  1. Label Callback
+  1. **Label Callback**
+
   The label callback can change the text that displays for a given data point. A common example to round data values; the following example rounds the data to two decimal places.
+
   ```
   var chart = new Chart(ctx, {
     type: 'line',
@@ -190,8 +205,11 @@ var chart = new Chart(ctx, {
     }
   });
   ```
-  2. Label Color Callback
+
+  2. **Label Color Callback**
+
   For example, to return a red box for each item in the tooltip you could do:
+
   ```
   var chart = new Chart(ctx, {
     type: 'line',
@@ -213,8 +231,11 @@ var chart = new Chart(ctx, {
     }
   });
   ```
-  3. Tooltip Item Interface
+
+  3. **Tooltip Item Interface**
+
   The tooltip items passed to the tooltip callbacks implement the following interface.
+
   ```
   {
     // Label for the tooltip
@@ -244,6 +265,7 @@ var chart = new Chart(ctx, {
     y: number
   }
   ```
+
 
 ## References
 * https://jtblin.github.io/angular-chart.js/
