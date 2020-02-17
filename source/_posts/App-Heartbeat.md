@@ -9,98 +9,49 @@ tags:
 - sessions
 ---
 
-This is an era of mobile technology where everyone is a smartphone user. To be able to use a smartphone we need to ‘Interact’ with it. A simple touch with a finger to open an app is an example of this ‘interact’ and this phenomenon is called ‘User Interaction’. If a user does not interact for a while, then heartbeat of application will stop.
+This is an era of mobile technology where everyone is a smartphone user. To be able to use a smartphone we need to ‘Interact’ with it. A simple touch with a finger to open an app is an example of this ‘interact’ and this phenomenon is called ‘User Interaction’.
+Heart of application will continue beat, as long as user interact. Heartbeat is used to calculate sessions, for how much time a user is interacted with application. When a user is started using app, we create a session. A session has two values, start time and end time. For a new session both start and end time will same (current time of system). Every one minute, we check, is user interacted or not. If user is interacted then we update that session by changing its end time (now end time for that session will be current time of system). If user is not interacted then we create a new session. Reason behind to create a heartbeat of application , we will have at least 60 seconds lost.
 
 {% asset_img heartbeat.jpeg Image_1 %}
 
 ## Let’s get started
 
-### Step -1: Add dependencies
+### Create a model
 
-```
-// Timber for logging
-implementation "com.jakewharton.timber:timber:4.7.1"
-
-//Gson
-implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
-```
-
-### Step -2: Create a layout for interaction
-
-In layout, we are adding a button which will change background colour.
-
-### activity_session.xml
-
-```
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#33000000"
-    tools:context=".SessionActivity">
-
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp"
-        android:background="@color/colorPrimary"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:text="@string/click"
-        android:textColor="@android:color/white" />
-
-</RelativeLayout>
-```
-
-### Step-3: Create a model class for sessions
-
-In that data class, we will perform some sessions related tasks (check session is active or not, update session etc.)
+In that data class, we will handle some sessions related tasks (check session is active or not, update session etc.). A session will have two values start time and end time.
 
 ```
 data class Session(
     val startTime: Long,
-    var endTime: Long) {
+    var endTime: Long
+    )
+```
 
-    override fun toString(): String {
-        return "[$startTime,$endTime]"
-    }
+We perform some operations in session -
+#### - Is session active :
 
-    fun isActive(): Boolean {
+In that we check current session is active or not. If difference between System current time and end time of that session is less than a heartbeat( heartbeat duration + heartbeat buffer). In our case heartbeat duration is 60 seconds and heartbeat buffer is 2 seconds.
+
+```
+fun isActive(): Boolean {
         return System.currentTimeMillis() - endTime <  HEARTBEAT_DURATION + HEARTBEAT_BUFFER
     }
+```
 
-    fun update(): Session {
+#### - Update current session:
+
+If session is active then we update current session. For updating current session we will put system current time in end time of that session.
+
+```
+fun update(): Session {
         endTime = System.currentTimeMillis()
         return this
     }
-
-    companion object {
-
-        const val HEARTBEAT_DURATION = 60_000L
-        private const val HEARTBEAT_BUFFER = 2_000L
-
-        fun fromString(str: String): Session {
-            val (startTime, endTime) = str.subSequence(1, str.length  - 1)
-                .split(",").map { it.toLong() }
-            return Session(startTime, endTime)
-        }
-
-        fun newSession() = Session(
-            System.currentTimeMillis(),
-            System.currentTimeMillis()
-        )
-    }
-}
 ```
 
-### Step-4: Create session manager
+### Create a manager
 
-Now we create a session manager, which will manage all sessions activities like — add session, update session. When we open application in onResume() of activity we start a handler and onPause(), stop handler.
+For handling all heartbeat operations, we will create a session manager. A session manager will manage all sessions activities like — add session, update session. When we open application in onResume() of activity we will start a handler and onPause(),will stop handler.
 
 ```
 init {
@@ -141,6 +92,6 @@ fun heartBeat() {
 }
 ```
 
-For more sample code , see the [App-Heartbeat](https://github.com/diwakarsinghdiwakar/App-Heartbeat "App-Heartbeat")
+For more sample code , see the [`App-Heartbeat`](https://github.com/diwakarsinghdiwakar/App-Heartbeat "App-Heartbeat")
 
 ## And we’re done!
