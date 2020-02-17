@@ -24,8 +24,6 @@ For authentication and token management at backend in Ruby On Rails we use [devi
 - Password reset flow(email reset link OR OTP based)
 - We would like to add or remove some fields from the signin API.
 etc
-&nbsp;
-&nbsp;
 
 ## Configutation:-
 
@@ -94,6 +92,7 @@ mount_devise_token_auth_for 'User', at: 'auth', controllers: {
 - OmniauthCallbacksController
 - SessionsController
 - TokenValidationsController
+&nbsp;
 
 ## References:-
 
