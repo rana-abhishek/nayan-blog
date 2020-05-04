@@ -1,5 +1,5 @@
 ---
-title: Python and Kafka: message passing and more
+title: 'Python and Kafka: message passing and more'
 date: 2020-05-03 14:50:04
 author: Abhishek Bose
 category: AI
