@@ -13,6 +13,7 @@ tags:
 - android
 - rails
 - ror
+- Ashish_Jajoria
 ---
 A complete guide on adding payments to your Android app with backend as RoR
 

@@ -12,6 +12,7 @@ tags:
 - rails
 - ruby
 - ror
+- Ashish_Jajoria
 ---
 
 For authentication and token management at backend in Ruby On Rails we use [devise-token-auth](https://github.com/lynndylanhurley/devise_token_auth).
