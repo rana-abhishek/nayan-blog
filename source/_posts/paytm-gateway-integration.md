@@ -472,6 +472,7 @@ class ProfileFragment : Fragment() {
 ```
 
 ## References:-
+
 1. [Add payments to your Android app with Paytm SDK](https://developer.paytm.com/docs/v1/android-sdk/)
 2. [Paytm_App_Checksum_Kit_Ruby](https://github.com/Paytm-Payments/Paytm_App_Checksum_Kit_Ruby)
 3. [Android Payment Gateway Integration Guide: PAYTM](https://medium.com/the-zalonin/android-payment-gateway-integration-guide-paytm-fa2ee01286e)
