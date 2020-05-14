@@ -18,18 +18,19 @@ tags:
 > In this blog, I will explain meta-learning what is also known as learning to learn in machine learning.
 
 
-![Meta Learning](meta-learning.png "Meta Learning")
+<!-- ![Meta Learning](meta-learning.png "Meta Learning") -->
+{% asset_img meta-learning.png Meta Learning %}
 
 ## What is Meta-Learning?
 
-Current AI agents excel at mastering a particular skill like object classification, predicting a disaster, etc. However, now AI is extensively used in day-to-day life. Almost every organization now uses AI in their products. So there is a need for a single AI agent that can solve a variety of problems. ***A good machine learning model often requires training with a large number of samples. Humans, in contrast, learn new concepts and skills much faster and more efficiently.*** Kids who have seen cats and birds only a few times can quickly tell them apart. Similar to humans, machine learning models need to be versatile and adapt to a new problem with the least number of samples. This essentially **meta-learning** aims to solve.
+Current AI agents excel at mastering a particular skill like object classification, predicting a disaster, [image segmentation](https://nayan.co/blog/2020/01/09/Efficient-Residual-Factorized-Neural-Network-for-Semantic-Segmentation/) etc. However, now AI is extensively used in day-to-day life. Almost every organization now uses AI in their products. So there is a need for a single AI agent that can solve a variety of problems. ***A good machine learning model often requires training with a large number of samples. Humans, in contrast, learn new concepts and skills much faster and more efficiently.*** Kids who have seen cats and birds only a few times can quickly tell them apart. Similar to humans, machine learning models need to be versatile and adapt to a new problem with the least number of samples. This essentially **meta-learning** aims to solve.
 
 Versatility is achieved by an intelligent amalgamation of meta-learning along with related techniques such as **reinforcement learning** (finding suitable actions to maximize a reward), **transfer learning**    (re-purposing a trained model for a specific task on a second related task), and **active learning** (learning algorithm chooses the data it wants to learn from). Such different learning techniques provide an AI agent with the brains to do multiple tasks without the need to learn every new task from scratch. Thereby making it capable of adapting intelligently to a wide variety of new, unseen situations.
 > **Using Meta-Learning, AI agents learn how to learn new tasks by reusing prior experience, rather than examining each new task in isolation.**
 
 ## **Approaches for Meta-Learning**
 
-There are two popular approaches to meta-learning.
+There are two popular approaches to [meta-learning](https://nayan.co/#/home).
 
 ### **The Simple View**
 
@@ -62,7 +63,7 @@ In a few-shot classification, the goal is to reduce the prediction error on data
 
 1. The final optimization uses the mini-batch to compute the loss and update the model parameters through backpropagation, in the same way as how we use it in the supervised learning
 
-We may consider each pair of sampled datasets as one data point. The model is trained such that it can generalize to other datasets. Symbols in red are added for meta-learning in addition to the supervised learning objective.
+We may consider each pair of sampled datasets as one data point. The model is trained such that it can generalize to other datasets. Symbols in red are added for [meta-learning](https://nayan.co/#/home) in addition to the supervised learning objective.
 
 
 <!-- {% asset_img formula_3.png %} -->
@@ -98,7 +99,7 @@ Thanks for reading it…
 
 1. [https://lilianweng.github.io/lil-log/2018/11/30/meta-learning.html#a-simple-view](https://lilianweng.github.io/lil-log/2018/11/30/meta-learning.html#a-simple-view)
 
-1. [https://medium.com/huggingface/from-zero-to-research-an-introduction-to-meta-learning-8e16e677f78a](https://medium.com/huggingface/from-zero-to-research-an-introduction-to-meta-learning-8e16e677f78a)
+1. [from-zero-to-research-an-introduction-to-meta-learning](https://medium.com/huggingface/from-zero-to-research-an-introduction-to-meta-learning-8e16e677f78a)
 
 3. http://localhost:4000/blog/2020/05/06/Meta-Learning-Learning-to-learn-fast/meta-learning.png
 
