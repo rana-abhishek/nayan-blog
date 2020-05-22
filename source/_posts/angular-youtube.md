@@ -1,8 +1,8 @@
 ---
-title: Youtube API with Anuglar
+title: Youtube Data API
 date: 2020-05-21 16:36:18
 author: Abhishek Rana
-category: Android
+category: Web
 tags:
 - angular
 - youtube
