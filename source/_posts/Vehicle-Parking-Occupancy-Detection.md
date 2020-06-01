@@ -55,7 +55,7 @@ This is one of the most important tasks in the entire pipeline as almost all the
 
 Before jumping onto this , I had done some research and found that the following 3 methods are most commonly used to tackle this kind of problem :
 
-	* Canny edge detection and hough line transform combined with image processing could detect the lines in the parking 
+	 * Canny edge detection and hough line transform combined with image processing could detect the lines in the parking 
 		zones.
 	 * Manually drawing out the contours on the parking zones.
 	 * Directly perform vehicle detection and locate the stationary cars assuming that they are on the parking zones.
@@ -92,13 +92,12 @@ Using the key-points in the above 2 images , we calculate their homography.
 
 1. We can represent vehicles as point objects by the following steps  :
 
-		a)  First step is to determine the 2d-point matrix by multiplying homography and the center coordinates of the 
+	1.  First step is to determine the 2d-point matrix by multiplying homography and the center coordinates of the 
 			bounding boxes 
 
 ![where center-x and center-y are the center coordinates of the bounding boxes](9.jpg)
 			
-			b) The final step in finding the 2d coordinates is to divide the 2d-point  matrix obtained by third 
-		element. 
+	 	2. The final step in finding the 2d coordinates is to divide the 2d-point  matrix obtained by the third element. 
 
 !['2d-point is calculated'](10.png)
 
