@@ -126,3 +126,5 @@ Point Polygon test is used here to find whether the point is inside or outside t
 
 Hence as it can be seen from the image above, with the help of ***Deep Learning*** and ***Computer Vision*** , we have successfully solved this problem by following a very simple and systematic approach.
 
+For more such exciting Deep Learning blog posts,[click here](https://nayan.co/blog/)
+
