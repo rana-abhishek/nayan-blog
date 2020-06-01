@@ -1,12 +1,17 @@
 ---
-title: Vehicle Parking Occupancy Detection
-date: 2020-05-29 17:22:29
+title: Detecting Whether a Parking Zone Is Vacant Or Occupied
+date: 2020-06-1 17:22:29
 author: Aman Goyal , Anubhav Rohatgi
-tags: #DEEPLEARNING , #COMPUTERVISION
+category: AI
+tags: 
+- Deep Learning  
+- Computer Vision
+- Parking Detection
+- Vehicle Occupancy Detection
 ---
 
 Circling around the parking is one of the most annoying experiences mainly because it is time consuming and quite irritating too.
-However , there has been a major boost in the field of Deep Learning and Computer Vision in the past few years which enables us to create a robust and a real-time solution.
+However , there has been a major boost in the field of ***Deep Learning*** and ***Computer Vision*** in the past few years which enables us to create a robust and a real-time solution.
 
 {% asset_img 20140103__bartpark31-1.jpg Depicting the Problem %}
 
@@ -25,7 +30,7 @@ Each of the 5 steps have been described in detail in the following sections :
 
 ### 1) Finding Suitable Images
 
-The first step to solve any problem in Deep Learning and Computer Vision is to collect data.
+The first step to solve any problem in ***Deep Learning*** and ***Computer Vision*** is to collect data.
 In our approach , we just required 2 images throughout the entire process.
 
 The 2 images required are:
@@ -68,7 +73,7 @@ We used the first method wherein we detected the lines using canny edge detectio
 
 ### 3) Vehicle Detection
 
-In order to achieve this , we used the state-of-the-art YOLOv3 object detection model.
+In order to achieve this , we had used the state-of-the-art YOLOv3 ***Deep Learning*** object detection model.
 
 ![Fig 6:  Vehicles detected by YoloV3](6.jpg)
 
@@ -76,7 +81,8 @@ This is a crucial step as once we get the bounding boxes accurately, only  then 
 
 ### 4) Representing the vehicles as point objects on 2d-map
 
-This step can be further broken to the following sub-steps :
+For this step , we would be using a very classical ***Computer Vision*** concept.
+This step can be broken to the following sub-steps :
 
 	*Using Google API , we came to know the dimensions of the parking areas in both the images. 
 	 *This helped us in restricting the images to particular areas which further aided us in automatically detecting key 
@@ -118,5 +124,5 @@ Point Polygon test is used here to find whether the point is inside or outside t
 
 ![Fig 12:   Final Result  ](12.jpg)
 
-Hence as it can be seen from the image above, we have successfully solved this problem by following a very simple and systematic approach.
+Hence as it can be seen from the image above, with the help of ***Deep Learning*** and ***Computer Vision*** , we have successfully solved this problem by following a very simple and systematic approach.
 
