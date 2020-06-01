@@ -1,5 +1,5 @@
 ---
-title: Generating Pdf in Ruby on Rails
+title: Generating Pdf in Ruby on Rails using Prawn
 date: 2020-02-26 06:02:58
 author: Ashish Jajoria
 categories:
@@ -9,9 +9,10 @@ tags:
 - rails
 - ruby
 - ror
+- ruby on rails
 - pdf
-- generatepdf
-- Ashish_Jajoria
+- generate pdf
+- Ashish Jajoria
 ---
 
 We all must have got requirement to generate PDFs at backend and store that on cloud. Well, here is a quick guide on how you can start generating the PDFs your own way without any limits.
@@ -195,3 +196,8 @@ receipt_pdf.render_file 'my_pdf_file.pdf'
 
 1. [Prawn Guide](http://prawnpdf.org/manual.pdf) with examples
 2. [Prawn Table Guide](http://prawnpdf.org/prawn-table-manual.pdf) with examples
+
+## Some good reads you may like:-
+
+1. [Override Devise Auth Token Controllers](https://nayan.co/blog/Ruby-on-Rails/override-devise-auth-token-controllers/)
+2. [Paytm Gateway Integration](https://nayan.co/blog/Ruby-on-Rails/paytm-gateway-integration/)

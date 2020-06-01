@@ -13,7 +13,7 @@ tags:
 - android
 - rails
 - ror
-- Ashish_Jajoria
+- Ashish Jajoria
 ---
 A complete guide on adding payments to your Android app with backend as RoR
 
@@ -477,3 +477,8 @@ class ProfileFragment : Fragment() {
 2. [Paytm_App_Checksum_Kit_Ruby](https://github.com/Paytm-Payments/Paytm_App_Checksum_Kit_Ruby)
 3. [Android Payment Gateway Integration Guide: PAYTM](https://medium.com/the-zalonin/android-payment-gateway-integration-guide-paytm-fa2ee01286e)
 4. [Transaction Status API](https://developer.paytm.com/docs/transaction-status-api/)
+
+## Some good reads you may like:-
+
+1. [Override Devise Auth Token Controllers](https://nayan.co/blog/Ruby-on-Rails/override-devise-auth-token-controllers/)
+2. [Generating Pdf in Ruby on Rails using Prawn](https://nayan.co/blog/Ruby-on-Rails/generating-pdf-in-ruby-on-rails/)

@@ -12,7 +12,7 @@ tags:
 - rails
 - ruby
 - ror
-- Ashish_Jajoria
+- Ashish Jajoria
 ---
 
 For authentication and token management at backend in Ruby On Rails we use [devise-token-auth](https://github.com/lynndylanhurley/devise_token_auth).
@@ -99,3 +99,8 @@ mount_devise_token_auth_for 'User', at: 'auth', controllers: {
 
 1. [devise_token_auth](https://github.com/lynndylanhurley/devise_token_auth) gem
 2. [Devise Token Auth](https://devise-token-auth.gitbook.io/devise-token-auth/) Guide
+
+## Some good reads you may like:-
+
+1. [Paytm Gateway Integration](https://nayan.co/blog/Ruby-on-Rails/paytm-gateway-integration/)
+2. [Generating Pdf in Ruby on Rails using Prawn](https://nayan.co/blog/Ruby-on-Rails/generating-pdf-in-ruby-on-rails/)
