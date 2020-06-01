@@ -91,14 +91,9 @@ This step can be further broken to the following sub-steps :
 Using the key-points in the above 2 images , we calculate their homography.
 
 1. We can represent vehicles as point objects by the following steps  :
-
-		a)  First step is to determine the 2d-point matrix by multiplying homography and the center coordinates of the 
-			bounding boxes 
-
+   1. `First step is to determine the 2d-point matrix by multiplying homography and the center coordinates of the bounding boxes`
 ![where center-x and center-y are the center coordinates of the bounding boxes](9.jpg)
-			
-			b) The final step in finding the 2d coordinates is to divide the 2d-point  matrix obtained by third 
-		element. 
+   2. `The final step in finding the 2d coordinates is to divide the 2d-point matrix obtained by third element.`
 
 !['2d-point is calculated'](10.png)
 
