@@ -17,10 +17,10 @@ ProGuard is a tool used to do the following in an Android application:
 ## Minify the code
 Detects and safely removes unused classes, fields, methods, and attributes from your app and its library dependencies
 
-##Obfuscate the code
+## Obfuscate the code
 Shortens the name of classes and members, which results in reduced DEX file sizes.
 
-##Optimize the code
+## Optimize the code
 Inspects and rewrites your code to further reduce the size of your app’s DEX files.
 
 {% asset_img flow_diagram.jpeg Image_1 %}
@@ -58,7 +58,7 @@ For Warning : You need to take a look on stacktrace to find which classes gives 
 -dontwarn java.nio.file.*
 ```
 
-##Some stats related to APK size
+## Some stats related to APK size
 
 {% asset_img stats.png Image_2 %}
 
