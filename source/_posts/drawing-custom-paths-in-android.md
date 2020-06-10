@@ -20,7 +20,7 @@ tags:
 
 We can draw simple lines and shapes by using `path.lineTo`, `path.moveTo` etc. But sometimes we have requirements to draw a line in pattern, for example: simple dashed, two lines where 1 is continuous and other one is dashed etc.
 
-{% asset_img lines.png %}
+![Lines Drawn By PathEffects](/blog/Android/drawing-custom-paths-in-android/lines.png)
 
 ## Getting started
 
