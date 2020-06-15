@@ -1,22 +1,27 @@
 ---
-title: Youtube Data API
+title: Youtube Data API in Angular app for realtime chanels video data
 date: 2020-05-21 16:36:18
 author: Abhishek Rana
 category: Web
 tags:
-- angular
-- youtube
+  - angular
+  - youtube
+  - Youtube data API
+  - Nayan
+  - Cloud Data
 ---
 
 <br>
 
-{% asset_img blog_banner.png banner %}
+![Youtube data API in Angular app](/blog/Web/angular-youtube/blog_banner.png)
 
-What do you think of Youtube channel videos in your Angular application? This article I show how easy it is to integrate into angular projects (version 7).
+Facing issues geting data of your Youtube channel on your webste? This blog is a guide to integrate youtube data API in your angular web application.
 
 ## YouTube Data API v3
+
 The first step is to get the api key. By visiting https://developers.google.com/youtube/v3/getting-started you’ll find the procedures you need to get your authorization credentials.
 In a nutshell, you need:
+
 1. Go to the Google Developers Console.
 2. Select a project.
 3. In the left sidebar, select APIs and authorization. In the list of APIs, make sure the status is ON for the YouTube Data API v3.
@@ -28,6 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
 ```
 
 And declare in imports:
+
 ```
 imports: [
 BrowserModule,
@@ -152,8 +158,11 @@ Let’s finalize, coding the component template (app.component.html:
 </div>
 ```
 
-We loop the array using the * ngFor directive. We have defined a link to view the video through videoID at href = “https://www.youtube.com/watch?v={{video.id.videoId}}".
+We loop the array using the \* ngFor directive. We have defined a link to view the video through videoID at href = “https://www.youtube.com/watch?v={{video.id.videoId}}".
 
 Resources:
+
 1. https://developers.google.com/youtube/v3
 2. https://developers.google.com/youtube/v3/docs/videos/list
+
+Previous blog: https://nayan.co/blog/Web/angular-maps/
