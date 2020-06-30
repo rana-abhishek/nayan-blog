@@ -15,7 +15,7 @@ tags:
 
 ![Youtube data API in Angular app](/blog/Web/angular-youtube/blog_banner.png)
 
-Facing issues geting data of your Youtube channel on your webste? This blog is a guide to integrate youtube data API in your angular web application.
+Facing issues getting data of your Youtube channel on your website? This blog is a guide demonstrating on how to integrate Youtube data API in your angular web application with few easy steps.
 
 ## YouTube Data API v3
 
