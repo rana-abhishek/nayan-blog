@@ -40,5 +40,5 @@ jobs:
         run: hexo generate
       - name: Deploy
         run: |-
-          gsutil -m rsync public gs://nayan-blogs
+          gsutil -m rsync -R public gs://nayan-blogs
 
