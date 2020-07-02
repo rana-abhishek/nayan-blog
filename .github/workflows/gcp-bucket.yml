@@ -39,7 +39,7 @@ jobs:
       - name: Generate static website
         run: hexo generate
       - name: Cleaning bucket
-        run: gsutil -m rm gs://nayan-blog
+        run: gsutil -m rm gs://nayan-blog/**
       - name: Deploy to GCP
         run: |-
           gsutil -m rsync -R public gs://nayan-blog
