@@ -6,7 +6,6 @@ cache: npm
 branches:
   only:
     - master
-    - gcp # build master branch only
 script:
   - npm install
   - hexo generate # generate static files
