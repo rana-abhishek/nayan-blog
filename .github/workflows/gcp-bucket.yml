@@ -1,0 +1,43 @@
+name: Build and Deploy to Google Cloud Storage
+
+on:
+  push:
+    branches:
+      - gcp
+env:
+  GCS_BUCKET: ${{ secrets.GCS_BUCKET }}
+
+jobs:
+  setup-build-deploy:
+    name: Setup, Build, and Deploy
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+
+      - name: Setup - gcloud / gsutil
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          service_account_key: ${{ secrets.GCS_SA_KEY }}
+          project_id: ${{ secrets.GCS_PROJECT }}
+          export_default_credentials: true
+
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Install Hexo CLI
+        run: npm install -g hexo-cli
+              
+      - name: Generate static website
+        run: hexo generate
+      - name: Deploy
+        run: |-
+          gsutil -m rsync -R output gs://$GCS_BUCKET
