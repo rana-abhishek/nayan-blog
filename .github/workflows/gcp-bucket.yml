@@ -40,5 +40,5 @@ jobs:
         run: hexo generate
       - name: Deploy
         run: |-
-          gsutil -m rsync output gs://$GCS_BUCKET
+          gsutil -m rsync output gs://nayan-blogs
 
