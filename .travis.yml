@@ -5,6 +5,7 @@ node_js:
 cache: npm
 branches:
   only:
+    - master
     - gcp # build master branch only
 script:
   - npm install
