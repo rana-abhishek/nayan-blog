@@ -17,8 +17,9 @@ jobs:
         node-version: [12.x]
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - run:
+          name: Install Hexo CLI
+          command: npm install -g hexo-cli
 
       - name: Setup - gcloud / gsutil
         uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
@@ -27,18 +28,21 @@ jobs:
           project_id: ${{ secrets.GCS_PROJECT }}
           export_default_credentials: true
 
-      - name: Install dependencies
-        uses: actions/setup-python@v2
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
         with:
-          python-version: "3.8"
-
-      - name: Setup - dependencies
-        run: |-
-          python -m pip install --upgrade pip setuptools wheel
-          pip install -r requirements.txt
-      - name: Build
-        run: |-
-          make publish
+          node-version: ${{ matrix.node-version }}
+      - run:
+          name: Install dependencies
+          command: npm install
+      - save_cache:
+          key: npm-deps-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Generate static website
+          command: hexo generate
       - name: Deploy
         run: |-
           gsutil -m rsync -R output gs://$GCS_BUCKET
