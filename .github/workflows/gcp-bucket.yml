@@ -8,7 +8,7 @@ env:
   GCS_BUCKET: ${{ secrets.GCS_BUCKET }}
 
 jobs:
-  setup-build-deploy:
+  setup-build-clean:
     name: Setup, Build, and Deploy
     runs-on: ubuntu-latest
 
@@ -40,7 +40,16 @@ jobs:
         run: hexo generate
       - name: Deleting old files
         run: gsutil rm -r gs://blog.nayan.co/**
+  deploy:
+    name: Deploy
+    needs: [setup-build-clean]
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
       - name: Deploy to GCP
         run: |-
           gsutil -m rsync -R public gs://blog.nayan.co
-
