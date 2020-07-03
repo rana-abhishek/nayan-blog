@@ -8,7 +8,7 @@ env:
   GCS_BUCKET: ${{ secrets.GCS_BUCKET }}
 
 jobs:
-  setup-build-deploy:
+  setup-build-clean:
     name: Setup, Build, and Deploy
     runs-on: ubuntu-latest
 
@@ -38,8 +38,33 @@ jobs:
 
       - name: Generate static website
         run: hexo generate
-      - name: Deleting old files
-        run: gsutil rm -r gs://blog.nayan.co/**
+#       - name: Deleting old files
+#         run: gsutil rm -r gs://blog.nayan.co/**
+      - name: Upload math result for job 1
+        uses: actions/upload-artifact@v1
+        with:
+          name: blog-build
+          path: public/
+  deploy:
+    name: Deploy
+    needs: [setup-build-clean]
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - name: Setup - gcloud / gsutil
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          service_account_key: ${{ secrets.GCS_SA_KEY }}
+          project_id: ${{ secrets.GCS_PROJECT }}
+          export_default_credentials: true
+      - uses: actions/download-artifact@v2
+        with:
+          name: blog-build
+          path: public
       - name: Deploy to GCP
         run: |-
           gsutil -m rsync -R public gs://blog.nayan.co
