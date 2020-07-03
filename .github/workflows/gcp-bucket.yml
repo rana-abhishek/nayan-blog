@@ -9,7 +9,7 @@ env:
 
 jobs:
   setup-build-clean:
-    name: Setup, Build, and Deploy
+    name: Setup env, delete old files and prepare for deploy
     runs-on: ubuntu-latest
 
     strategy:
@@ -38,15 +38,15 @@ jobs:
 
       - name: Generate static website
         run: hexo generate
-#       - name: Deleting old files
-#         run: gsutil rm -r gs://blog.nayan.co/**
+      - name: Deleting old files
+        run: gsutil rm -r gs://blog.nayan.co/**
       - name: Upload math result for job 1
         uses: actions/upload-artifact@v1
         with:
           name: blog-build
           path: public/
   deploy:
-    name: Deploy
+    name: Copying new build to GCP bucket
     needs: [setup-build-clean]
     runs-on: ubuntu-latest
 
@@ -61,6 +61,8 @@ jobs:
           service_account_key: ${{ secrets.GCS_SA_KEY }}
           project_id: ${{ secrets.GCS_PROJECT }}
           export_default_credentials: true
+      - name: Installing rsync
+        run: gsutil help crcmod
       - uses: actions/download-artifact@v2
         with:
           name: blog-build
