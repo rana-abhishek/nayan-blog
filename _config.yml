@@ -19,7 +19,7 @@ root: /blog.nayan.co/
 permalink: /:category/:title/
 permalink_defaults:
 pretty_urls:
-  trailing_index: false # Set to false to remove trailing index.html from permalinks
+  trailing_index: true # Set to false to remove trailing index.html from permalinks
 
 # Directory
 source_dir: source
