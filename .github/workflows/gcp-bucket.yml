@@ -1,4 +1,4 @@
-name: Build and Deploy to Google Cloud Storage
+name: Build and Deploy to Google Cloud Storage bucket
 
 on:
   push:
