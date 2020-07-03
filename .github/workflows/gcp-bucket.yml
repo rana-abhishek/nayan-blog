@@ -40,4 +40,4 @@ jobs:
         run: hexo generate
       - name: Deploy to GCP
         run: |-
-          gsutil -m rsync -R public gs://nayan-blog
+          gsutil -m rsync -R public gs://blog.nayan.co
