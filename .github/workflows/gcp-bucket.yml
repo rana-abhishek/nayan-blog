@@ -40,6 +40,11 @@ jobs:
         run: hexo generate
       - name: Deleting old files
         run: gsutil rm -r gs://blog.nayan.co/**
+      - name: Upload math result for job 1
+        uses: actions/upload-artifact@v1
+        with:
+          name: blog-build
+          path: public/
   deploy:
     name: Deploy
     needs: [setup-build-clean]
@@ -50,6 +55,10 @@ jobs:
         node-version: [12.x]
 
     steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: blog-build
+          path: public
       - name: Deploy to GCP
         run: |-
           gsutil -m rsync -R public gs://blog.nayan.co
