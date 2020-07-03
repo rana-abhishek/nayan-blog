@@ -38,6 +38,8 @@ jobs:
 
       - name: Generate static website
         run: hexo generate
+      - name: Deleting old files
+        run: gsutil rm -r gs://blog.nayan.co/**
       - name: Deploy to GCP
         run: |-
           gsutil -m rsync -R public gs://blog.nayan.co
