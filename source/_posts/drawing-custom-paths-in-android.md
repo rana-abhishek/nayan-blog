@@ -129,4 +129,4 @@ override fun onDraw(canvas: Canvas?) {
 ## Some good reads you may like:-
 
 1. [Paytm Gateway Integration](https://nayan.co/blog/Ruby-on-Rails/paytm-gateway-integration/)
-1. [Android Testing Strategy](https://nayan.co/blog/Android/Android-Testing-Strategy/)
+2. [Android Testing Strategy](https://nayan.co/blog/Android/Android-Testing-Strategy/)
