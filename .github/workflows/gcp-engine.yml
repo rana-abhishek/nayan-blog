@@ -1,0 +1,50 @@
+name: Build and Deploy to Google Cloud Storage bucket
+
+on:
+  push:
+    branches:
+      - gcp-engine
+env:
+  GCS_BUCKET: ${{ secrets.GCS_BUCKET }}
+
+jobs:
+  setup-build-clean:
+    name: Setup env, delete old files and prepare for deploy
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - name: Setup - gcloud / gsutil
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          service_account_key: ${{ secrets.GCS_SA_KEY }}
+          project_id: ${{ secrets.GCS_PROJECT }}
+          export_default_credentials: true
+
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: npm install
+      - name: Installing rsync
+        run: gsutil help crcmod
+      - name: Install Hexo CLI
+        run: npm install -g hexo-cli
+
+      - name: Generate static website
+        run: hexo generate
+      #       - name: Deleting old files
+      #         run: gsutil rm -r gs://blog.nayan.co/**
+      - name: Upload math result for job 1
+        uses: actions/upload-artifact@v1
+        with:
+          name: blog-build
+          path: public/
+      - name: Deploy to GCP
+        run: |-
+          gcloud compute scp --recurse public cam-nayan:~/blog
