@@ -25,8 +25,8 @@ jobs:
           key: ${{ secrets.KEY }}  
           passphrase: ${{ secrets.PASS }}
           script: |
-            cd ../../var/www
-            sudo git clone https://github.com/nayan-tech/nayan-blog.git blog
+            cd ../../var/www/html
+            git clone https://github.com/nayan-tech/nayan-blog.git blog
             cd blog
             npm install
             hexo clean
