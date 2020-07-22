@@ -23,7 +23,6 @@ jobs:
           host: ${{secrets.HOST}}
           username: ${{ secrets.USER }}
           key: ${{ secrets.KEY }}
-          password: ${{ secrets.PASS }}
           script: |
             mkdir -p ~/blog/
             cd ~/blog/
