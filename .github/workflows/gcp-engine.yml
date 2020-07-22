@@ -40,4 +40,4 @@ jobs:
         run: hexo generate
       - name: Deploy to GCP
         run: |-
-          gcloud info
+          gcloud compute ssh abhishek971996@cam-dashboard
