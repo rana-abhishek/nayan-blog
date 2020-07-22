@@ -38,13 +38,6 @@ jobs:
 
       - name: Generate static website
         run: hexo generate
-      #       - name: Deleting old files
-      #         run: gsutil rm -r gs://blog.nayan.co/**
-      - name: Upload math result for job 1
-        uses: actions/upload-artifact@v1
-        with:
-          name: blog-build
-          path: public/
       - name: Deploy to GCP
         run: |-
-          gcloud compute scp --recurse public cam-nayan:~/blog
+          gcloud info
