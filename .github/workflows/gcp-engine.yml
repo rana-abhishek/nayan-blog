@@ -40,5 +40,5 @@ jobs:
         run: hexo generate
       - name: Deploy to GCP
         run: |-
-          gcloud compute ssh abhishek971996@cam-dashboard --zone us-central1-a	
+            gcloud compute scp --recurse public cam-dashboard:~/blog --zone us-central1 -a
 
