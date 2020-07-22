@@ -25,9 +25,9 @@ jobs:
           key: ${{ secrets.KEY }}  
           passphrase: ${{ secrets.PASS }}
           script: |
-            cd ../../var/www/html/blog
-            sudo git pull
-            sudo npm install
-            sudo hexo clean
-            sudo hexo generate
+            cd blog
+            git pull
+            npm install
+            hexo clean
+            hexo generate
 
