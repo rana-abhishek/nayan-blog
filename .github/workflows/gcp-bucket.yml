@@ -3,7 +3,7 @@ name: Build and Deploy to Google Cloud Storage bucket
 on:
   push:
     branches:
-      - gcp
+      - gcp1
 env:
   GCS_BUCKET: ${{ secrets.GCS_BUCKET }}
 
