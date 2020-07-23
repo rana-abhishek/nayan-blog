@@ -14,8 +14,8 @@ timezone: ""
 # URL
 # root: /blog/
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://blog.nayan.co
-root: /
+url: https://app.nayan.co
+root: /blog/
 permalink: /:category/:title/
 permalink_defaults:
 
