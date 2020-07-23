@@ -26,6 +26,7 @@ jobs:
           passphrase: ${{ secrets.PASS }}
           script: |
             cd blog
+            git checkout gcp
             git pull
             npm install
             hexo clean
