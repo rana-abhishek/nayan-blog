@@ -65,3 +65,7 @@ For Warning : You need to take a look on stacktrace to find which classes gives 
 ## References
 
 https://developer.android.com/studio/build/shrink-code
+
+## Some good reads you may like:-
+
+1. [App-Heartbeat](https://nayan.co/blog/Android/App-Heartbeat/)
