@@ -6,6 +6,12 @@ category: Android
 tags:
 - android
 - proguard
+- kotlin
+- shrinking
+- obfuscation
+- optimization
+- Diwakar Singh
+
 ---
 
 To make an application is not good enough, but it also needs to make secure and optimize. It’s the basic needs of an application.
