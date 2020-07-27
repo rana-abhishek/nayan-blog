@@ -1,5 +1,5 @@
 ---
-title: Applying Proguard in an android application
+title: How to apply Proguard in an android application (Code obfuscation, shrinking, optimization)
 date: 2020-07-27 18:40:48
 author: Diwakar Singh
 category: Android
@@ -29,7 +29,7 @@ Shortens the name of classes and members, which results in reduced DEX file size
 ## Optimize the code
 Inspects and rewrites your code to further reduce the size of your app’s DEX files.
 
-{% asset_img flow_diagram.jpg Image_1 %}
+![Flow diagram for applying proguard](/blog/Android/Applying-Proguard-in-an-android-application/flow_diagram.jpg)
 
 To enable shrinking, obfuscation, and optimization, include the following in your project-level build.gradle file.
 
