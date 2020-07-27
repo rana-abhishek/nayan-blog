@@ -7,6 +7,7 @@ tags:
 - android
 - user interaction
 - sessions
+- Diwakar Singh
 ---
 
 This is an era of mobile technology where everyone is a smartphone user. To be able to use a smartphone we need to ‘Interact’ with it. A simple touch with a finger to open an app is an example of this ‘interact’ and this phenomenon is called ‘User Interaction’.

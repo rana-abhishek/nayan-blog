@@ -1,6 +1,6 @@
 ---
 title: Applying Proguard in an android application
-date: 2020-05-25 18:40:48
+date: 2020-07-27 18:40:48
 author: Diwakar Singh
 category: Android
 tags:
