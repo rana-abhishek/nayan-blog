@@ -29,7 +29,7 @@ Shortens the name of classes and members, which results in reduced DEX file size
 ## Optimize the code
 Inspects and rewrites your code to further reduce the size of your app’s DEX files.
 
-{% asset_img flow_diagram.jpeg Image_1 %}
+{% asset_img flow_diagram.jpg Image_1 %}
 
 To enable shrinking, obfuscation, and optimization, include the following in your project-level build.gradle file.
 
