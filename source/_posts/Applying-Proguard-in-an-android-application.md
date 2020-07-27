@@ -66,7 +66,7 @@ For Warning : You need to take a look on stacktrace to find which classes gives 
 
 ## Some stats related to APK size
 
-{% asset_img stats.png Image_2 %}
+![Some stats before and after applying proguard](/blog/Android/Applying-Proguard-in-an-android-application/stats.png)
 
 ## References
 
