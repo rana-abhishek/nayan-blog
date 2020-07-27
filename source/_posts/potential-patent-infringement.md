@@ -7,6 +7,8 @@ category:
 tags:
   - Patents
   - Infringement
+  - Nayan IP
+  - Nayan data protection
 ---
 
 <br>
