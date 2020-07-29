@@ -5,12 +5,10 @@ on:
     branches:
       - gcp
       - master
-env:
-  GCS_BUCKET: ${{ secrets.GCS_BUCKET }}
 
 jobs:
   setup-build-clean:
-    name: Setup env, delete old files and prepare for deploy
+    name: SSH, delete old files and generate new build
     runs-on: ubuntu-latest
 
     strategy:
@@ -18,7 +16,7 @@ jobs:
         node-version: [12.x]
 
     steps:
-      - name: Deploy NodeJS app
+      - name: Deploy blog website via SSH
         uses: appleboy/ssh-action@v0.1.2
         with:
           host: ${{secrets.HOST}}
