@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - gcp
+      - master
 env:
   GCS_BUCKET: ${{ secrets.GCS_BUCKET }}
 
