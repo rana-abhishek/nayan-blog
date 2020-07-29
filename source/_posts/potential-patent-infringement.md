@@ -45,6 +45,6 @@ Like analysis of all market risks before launching a product, patent infringemen
 
 If you are new to patents or are trying to learn this field in greater detail, do subscribe to this blog to get notified on similar articles on patent fundamentals.
 
-## IP focus at Nayan Technologies
+## IP focus at [Nayan](https://nayan.co) Technologies
 
 Nayan Technologies is a new-age start-up focussed on Artificial Intelligence-based Intelligent Mobility. At Nayan, we strongly believe in creating and expanding our Intellectual Property assets. Nayan Technologies has more than 40 patent applications filed across the world in jurisdictions such as USA, Europe, PCT, Middle-East (GCC), Canada, India, Singapore, Indonesia and Australia with 4 patent grants already received across USA, Australia and India. These patents protect various facets of the Intelligent Mobility framework that Nayan Technology works on. To avoid external patent risks, Nayan applies a two-pronged strategy – first, to create, expand and diversify its own patent portfolio and second, to be aware of third-party patents from which patent risk is anticipated and take appropriate strategies accordingly. While innovation one of the core strengths at Nayan, we also believe in ensuring that Nayan’s innovation does not wilfully infringe on third-party patents, by following the above mentioned practices.
