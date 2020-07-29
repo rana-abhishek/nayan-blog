@@ -1,15 +1,15 @@
-name: Build and Deploy to Google Cloud Storage
+name: Build and Deploy to Google Cloud Storage bucket
 
 on:
   push:
     branches:
-      - gcp
+      - gcp1
 env:
   GCS_BUCKET: ${{ secrets.GCS_BUCKET }}
 
 jobs:
-  setup-build-deploy:
-    name: Setup, Build, and Deploy
+  setup-build-clean:
+    name: Setup env, delete old files and prepare for deploy
     runs-on: ubuntu-latest
 
     strategy:
@@ -17,7 +17,6 @@ jobs:
         node-version: [12.x]
 
     steps:
-
       - name: Setup - gcloud / gsutil
         uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
         with:
@@ -32,12 +31,42 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install dependencies
         run: npm install
-      
+      - name: Installing rsync
+        run: gsutil help crcmod
       - name: Install Hexo CLI
         run: npm install -g hexo-cli
-              
+
       - name: Generate static website
         run: hexo generate
-      - name: Deploy
+      - name: Deleting old files
+        run: gsutil rm -r gs://blog.nayan.co/**
+      - name: Upload math result for job 1
+        uses: actions/upload-artifact@v1
+        with:
+          name: blog-build
+          path: public/
+  deploy:
+    name: Copying new build to GCP bucket
+    needs: [setup-build-clean]
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - name: Setup - gcloud / gsutil
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          service_account_key: ${{ secrets.GCS_SA_KEY }}
+          project_id: ${{ secrets.GCS_PROJECT }}
+          export_default_credentials: true
+      - name: Installing rsync
+        run: gsutil help crcmod
+      - uses: actions/download-artifact@v2
+        with:
+          name: blog-build
+          path: public
+      - name: Deploy to GCP
         run: |-
-          gsutil -m rsync -R output gs://$GCS_BUCKET
+          gsutil -m rsync -R public gs://blog.nayan.co

@@ -1,0 +1,35 @@
+name: Build and Deploy to Google Cloud Storage bucket
+
+on:
+  push:
+    branches:
+      - gcp
+      - master
+env:
+  GCS_BUCKET: ${{ secrets.GCS_BUCKET }}
+
+jobs:
+  setup-build-clean:
+    name: Setup env, delete old files and prepare for deploy
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - name: Deploy NodeJS app
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          host: ${{secrets.HOST}}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.KEY }}  
+          passphrase: ${{ secrets.PASS }}
+          script: |
+            cd blog
+            git checkout gcp
+            git pull
+            npm install
+            hexo clean
+            hexo generate
+
