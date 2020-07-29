@@ -13,7 +13,7 @@ tags:
 
 <br>
 
-![Youtube data API in Angular app](/Web/angular-youtube/blog_banner.png)
+![Youtube data API in Angular app](/blog/Web/angular-youtube/blog_banner.png)
 
 Facing issues getting data of your Youtube channel on your website? This blog is a guide demonstrating on how to integrate Youtube data API in your angular web application with few easy steps.
 

@@ -3,24 +3,24 @@ title: How to draw custom paths/lines in Android usign PathEffect
 date: 2020-06-08 12:41:05
 author: Ashish Jajoria
 categories:
-- ["Android"]
-tags: 
-- android
-- kotlin
-- canvas
-- paint
-- path
-- PathDashPathEffect
-- DashPathEffect
-- CornerPathEffect
-- ComposePathEffect
-- draw custom path
-- Ashish Jajoria
+  - ["Android"]
+tags:
+  - android
+  - kotlin
+  - canvas
+  - paint
+  - path
+  - PathDashPathEffect
+  - DashPathEffect
+  - CornerPathEffect
+  - ComposePathEffect
+  - draw custom path
+  - Ashish Jajoria
 ---
 
 We can draw simple lines and shapes by using `path.lineTo`, `path.moveTo` etc. But sometimes we have requirements to draw a line in pattern, for example: simple dashed, two lines where 1 is continuous and other one is dashed etc.
 
-![Lines Drawn By PathEffects](/Android/drawing-custom-paths-in-android/lines.png)
+![Lines Drawn By PathEffects](/blog/Android/drawing-custom-paths-in-android/lines.png)
 
 ## Getting started
 
